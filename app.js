@@ -2,9 +2,9 @@
 const express = require("express");
 const app = express();
 
-// Import bodyparser and set urlencoded parser as middleware for the application with extended parsing mode
-const bodyParser = require("bodyparser");
-app.use(bodyParser.urlencoded({extend: true}));
+// Import bodyparser and set urlencoded parser as middleware for the application with extended parsing mode (nested objects)
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up the view engine
 app.set("view engine", "ejs");
@@ -27,6 +27,11 @@ connection.connect((err) => {
 
 // Serve static files from a public directory
 app.use(express.static("home"));
+
+
+app.get("/", (req, res) => {
+    res.render("index");
+})
 
 
 

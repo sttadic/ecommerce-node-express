@@ -6,6 +6,13 @@
     border-radius: 1rem;
 }
 
+/* Carousel size increase relative to screen size to fit content on smaller screens */
+@media only screen and (max-width: 585px) {
+    .carousel {
+        width: 85vw;
+    }
+}
+
 /* Round corner of images */
 .carousel img {
     border-radius: 1rem;
@@ -35,7 +42,7 @@
 
 }
 
-/* Container class for other content on index page and newsletter sing-up form */
+/* Container for paragraph and newsletter sing-up form */
 .container-index {
     width: 78vw;
     margin-top: 3rem;
@@ -43,9 +50,14 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* Border style of heading inside of container-index class */
+.container-index h2 {
+    border-bottom: 0.1rem inset white;
+}
+
 /* Font size for paragraph within a container-index element */
 .para {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 /* Margin and borders of newsletter form */
@@ -59,18 +71,30 @@
 /* Set width and center heading within newsletter form element */
 .newsletter h4 {
     font-style: italic;
-    width: 50%;
+    width: 60%;
     margin: auto;
-    padding-top: 2rem ;
+    padding-top: 2rem;
 }
 
 /* Define size, margins and borders of input element within newsletter */
 input[type="email"] {
-    width: 50%;
+    width: 40%;
     margin: 2rem;
     outline: 0.5rem groove rgba(202, 148, 148, 0.5);
     border-radius: 0.5rem;
     padding-left: 0.5rem;
+}
+
+
+/* Change width relative to the parent element when screen size less than 650px */
+@media only screen and (max-width: 650px) {
+    .newsletter h4 {
+        width: 70%;
+    }
+
+    input[type="email"] {
+        width: 70%;
+    }
 }
 
 /* Opacity for input placeholder */

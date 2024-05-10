@@ -1,0 +1,35 @@
+/* Bootstrap's Carousel size, positioning and border style */
+.carousel {
+    width: 78vw;
+    margin: auto;
+    border: 0.2rem inset white;
+    border-radius: 1rem;
+}
+
+/* Round corner of images */
+.carousel img {
+    border-radius: 1rem;
+}
+
+/* Style of 'Shop Now' button */
+.carousel .btn {
+    background-color: rgba(90, 0, 0, 0.3);
+    color: white;
+    border: 0.1rem solid white;
+}
+
+/* Change style of 'Shop Now' button on mouseover */
+.carousel .btn:hover {
+    outline: 0.2rem solid white;
+
+}
+
+/* Font size of text within slides of a Carousel */
+.carousel-item {
+    font-size: 120%;
+}
+
+/* Set font for headings within slides */
+.carousel h4 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

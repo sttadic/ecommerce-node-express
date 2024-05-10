@@ -1,4 +1,4 @@
-/* General style */
+/* General style of a pages and background image */
 body {
     background-image: url("../images/background.jpg");
     background-attachment: fixed;
@@ -10,7 +10,8 @@ body {
     align-items: center;
 }
 
-/* Navbar */
+/* NAVBAR */
+/* Modify style of Bootstrap's Navbar element*/
 .navbar {
     font-size: 1.3rem;
     margin-bottom: 2%;
@@ -21,6 +22,7 @@ body {
     box-shadow: -0.5rem 0.4rem 0.2rem rgba(202, 148, 148, 0.5);
 }
 
+/* Font and border style of logo contained in the Navbar */
 .navbar-brand {
     font-weight: 600;
     font-size: 1.5rem;
@@ -30,42 +32,13 @@ body {
     box-shadow: -0.5rem 0.5rem 0.2rem rgba(202, 148, 148, 0.5);
 }
 
+/* Setting margin for a div containing all Navbar elements */
 .container-nav {
-    padding-left: 5%;
-    padding-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
+/* Make Nevbar elements wider apart */
 .nav-item {
-    padding-left: 1rem;
+    margin-left: 1rem;
 }
-
-/* Carousel */
-.carousel {
-    width: 78vw;
-    margin: auto;
-    border: 0.2rem inset white;
-    border-radius: 1rem;
-}
-
-.carousel img {
-    border-radius: 1rem;
-}
-
-.carousel .btn {
-    background-color: rgba(90, 0, 0, 0.3);
-    color: white;
-    border: 0.1rem solid white;
-}
-
-.carousel .btn:hover {
-    outline: 0.2rem solid white;
-
-}
-
-.carousel-item {
-    font-size: 120%;
-}
-
-
-
-

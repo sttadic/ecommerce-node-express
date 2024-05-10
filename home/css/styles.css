@@ -60,11 +60,6 @@ body {
     margin-right: 1rem;
 }
 
-/* Height of each row of the footer's grid system*/
-.footer .row {
-    height: 2rem;
-}
-
 /* Default style removed for a link in the footer */
 .footer a {
     text-decoration: none;
@@ -76,4 +71,11 @@ body {
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
     border-radius: 0.2rem;
     outline: 0.2rem groove rgba(202, 148, 148, 0.5);
+}
+
+/* Media query - responsive design for footer's column elements */
+@media only screen and (max-width: 991px) {
+    .footer .col-lg-4 {
+        margin-bottom: 1.5rem;
+    }
 }

@@ -11,19 +11,6 @@
     border-radius: 1rem;
 }
 
-/* Style of 'Shop Now' button */
-.carousel .btn {
-    background-color: rgba(90, 0, 0, 0.3);
-    color: white;
-    border: 0.1rem solid white;
-}
-
-/* Change style of 'Shop Now' button on mouseover */
-.carousel .btn:hover {
-    outline: 0.2rem solid white;
-
-}
-
 /* Font size of text within slides of a Carousel */
 .carousel-item {
     font-size: 120%;
@@ -32,4 +19,61 @@
 /* Set font for headings within slides of a Carousel*/
 .carousel h4 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Style of buttons */
+.btn {
+    background-color: rgba(90, 0, 0, 0.3);
+    color: white;
+    border: 0.1rem solid white;
+    margin-bottom: 0.5rem;
+}
+
+/* Change style of buttons on mouseover */
+.btn:hover {
+    outline: 0.2rem solid white;
+
+}
+
+/* Container class for other content on index page and newsletter sing-up form */
+.container-index {
+    width: 78vw;
+    margin-top: 3rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Font syle for paragraph within a container-index element */
+.para {
+    font-size: 1.8rem;
+    font-style: italic;
+}
+
+/* Margin and borders of newsletter form */
+.newsletter {
+    margin-top: 3rem;
+    border: 0.1rem solid white;
+    border-radius: 2rem;
+    outline: 1rem groove rgba(202, 148, 148, 0.5);
+   
+}
+
+/* Set width and center heading within newsletter form element */
+.newsletter h4 {
+    width: 50%;
+    margin: auto;
+    padding-top: 2rem ;
+}
+
+/* Define size, margins and borders of input element within newsletter */
+input[type="email"] {
+    width: 50%;
+    margin: 2rem;
+    outline: 0.5rem groove rgba(202, 148, 148, 0.5);
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+/* Opacity for input placeholder */
+input[type="email"]::placeholder {
+    opacity: 0.8;
 }

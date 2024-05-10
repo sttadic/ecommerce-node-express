@@ -31,9 +31,11 @@ app.use(express.static("home"));
 
 app.get("/", (req, res) => {
     res.render("index");
-})
+});
 
-
+app.post("/newsletter", (req, res) => {
+    console.log("Success");
+});
 
 
 

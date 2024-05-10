@@ -8,6 +8,7 @@ body {
     padding: 0;
     margin: 0;
     align-items: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 /* NAVBAR */
@@ -29,7 +30,7 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 1rem;
     padding: 0 0.5rem 0 0.5rem;
-    box-shadow: -0.5rem 0.5rem 0.2rem rgba(202, 148, 148, 0.5);
+    outline: 0.5rem groove rgba(202, 148, 148, 0.5);
 }
 
 /* Setting margin for a div containing all Navbar elements */

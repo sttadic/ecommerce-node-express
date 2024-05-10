@@ -1,6 +1,9 @@
 /* General style */
 body {
-    background-color: black;
+    background-image: url("../images/background.jpg");
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
     padding: 0;
     margin: 0;
@@ -11,9 +14,58 @@ body {
 .navbar {
     font-size: 1.3rem;
     margin-bottom: 2%;
+    background-image: url("../images/background.jpg");
+    background-blend-mode: overlay;
+    background-color: rgba(90, 0, 0, 0.3);
+    border-bottom: 0.1rem solid white;
+    box-shadow: -0.5rem 0.4rem 0.2rem rgba(202, 148, 148, 0.5);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 1rem;
+    padding: 0 0.5rem 0 0.5rem;
+    box-shadow: -0.5rem 0.5rem 0.2rem rgba(202, 148, 148, 0.5);
 }
 
 .container-nav {
     padding-left: 5%;
     padding-right: 5%;
 }
+
+.nav-item {
+    padding-left: 1rem;
+}
+
+/* Carousel */
+.carousel {
+    width: 78vw;
+    margin: auto;
+    border: 0.2rem inset white;
+    border-radius: 1rem;
+}
+
+.carousel img {
+    border-radius: 1rem;
+}
+
+.carousel .btn {
+    background-color: rgba(90, 0, 0, 0.3);
+    color: white;
+    border: 0.1rem solid white;
+}
+
+.carousel .btn:hover {
+    outline: 0.2rem solid white;
+
+}
+
+.carousel-item {
+    font-size: 120%;
+}
+
+
+
+

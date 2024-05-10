@@ -43,10 +43,9 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* Font syle for paragraph within a container-index element */
+/* Font size for paragraph within a container-index element */
 .para {
-    font-size: 1.8rem;
-    font-style: italic;
+    font-size: 1.6rem;
 }
 
 /* Margin and borders of newsletter form */
@@ -55,11 +54,11 @@
     border: 0.1rem solid white;
     border-radius: 2rem;
     outline: 1rem groove rgba(202, 148, 148, 0.5);
-   
 }
 
 /* Set width and center heading within newsletter form element */
 .newsletter h4 {
+    font-style: italic;
     width: 50%;
     margin: auto;
     padding-top: 2rem ;

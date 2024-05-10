@@ -45,15 +45,35 @@ body {
 }
 
 /* FOOTER */
+/* Footer element font size, background and padding set */
 .footer {
+    font-size: 1.1rem;
     background-blend-mode: overlay;
     background-color: rgba(90, 0, 0, 0.2);
     outline: 0.5rem groove rgba(202, 148, 148, 0.5);
     padding: 1rem;
 }
 
+/* Size and margin of social media icons */
 .footer img {
     width: 2.3rem;
-    color: white;
     margin-right: 1rem;
+}
+
+/* Height of each row of the footer's grid system*/
+.footer .row {
+    height: 2rem;
+}
+
+/* Default style removed for a link in the footer */
+.footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Footer links style change on mousover */
+.footer a:hover {
+    padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+    border-radius: 0.2rem;
+    outline: 0.2rem groove rgba(202, 148, 148, 0.5);
 }

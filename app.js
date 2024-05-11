@@ -39,7 +39,14 @@ app.post("/newsletter", (req, res) => {
 });
 
 app.get("/products", (req, res) => {
-    res.render("products");
+
+    connection.query("SELECT image, description, price FROM products", (error, data) => {
+        if (error) {
+            console.log("Error querying database: " + error);
+        } else {
+            res.render("products", {product: data});
+        }
+    });
 });
 
 

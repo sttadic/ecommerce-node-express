@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "root",
-    database: "coffee_db"
+    database: "G00438839"
 });
 connection.connect((err) => {
     if (err) {

@@ -1,0 +1,8 @@
+.container-products {
+    width: 78vw;
+    border: 0.1rem solid white;
+ }
+
+.container-products img {
+    width: 100%;
+}

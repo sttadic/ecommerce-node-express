@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "root",
-    database: ""
+    database: "coffee_db"
 });
 connection.connect((err) => {
     if (err) {
@@ -29,6 +29,7 @@ connection.connect((err) => {
 app.use(express.static("home"));
 
 
+// Routes
 app.get("/", (req, res) => {
     res.render("index");
 });
@@ -37,8 +38,9 @@ app.post("/newsletter", (req, res) => {
     console.log("Success");
 });
 
-
-
+app.get("/products", (req, res) => {
+    res.render("products");
+});
 
 
 // Start a server

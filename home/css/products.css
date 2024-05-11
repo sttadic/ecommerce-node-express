@@ -1,8 +1,32 @@
 .container-products {
     width: 78vw;
-    border: 0.1rem solid white;
  }
 
 .container-products img {
     width: 100%;
+    border: 0.2rem groove white;
+    margin-bottom: 1rem;
+}
+
+.container-prod {
+    width: 95%;
+    outline: 0.5rem groove rgba(36, 1, 1, 0.5);
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.price_add {
+    align-items: center;
+    text-align: center;
+}
+
+.btn {
+    background-color: rgba(90, 0, 0, 0.3);
+    color: white;
+    border: 0.1rem solid white;
+    margin-bottom: 0.5rem;
+}
+
+.btn:hover {
+    outline: 0.2rem solid white;
 }

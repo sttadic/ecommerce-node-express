@@ -7,38 +7,54 @@
         <%- include("includes/navbar.ejs") %>
 
         <div class="container-fluid container-products">
-            <div class="row">
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-                <div class="col-lg-6">
-                    <%- include("includes/product.ejs") %>
-                </div>
-            </div>
+            <% for (let i = 0; i < products.length; i += 2) { %>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="container container-prod">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="images/<%= products[i].image %>" alt="product image">
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>
+                                        <%= products[i].description %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row price_add">
+                                <div class="col-lg-6">
+                                    <h4><%= products[i].price %></h4>
+                                </div>
+                                <div class="col-lg-6">
+                                    <button type="submit" class="btn">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="container container-prod">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="images/<%= products[i+1].image %>" alt="product image">
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>
+                                        <%= products[i+1].description %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row price_add">
+                                <div class="col-lg-6">
+                                    <h4><%= products[i+1].price %></h4>
+                                </div>
+                                <div class="col-lg-6">
+                                    <button type="submit" class="btn">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            <% }; %>
         </div>
         <%- include("includes/footer.ejs") %>
     </body>

@@ -79,3 +79,24 @@ body {
         margin-bottom: 1.5rem;
     }
 }
+
+/* ABOUT US */
+.about {
+    margin: auto;
+    width: 60vw;
+    margin-bottom: 3rem;
+    
+}
+
+.about p {
+    font-size: 1.2rem;
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.7);
+}
+
+.about img {
+    margin-right: 2rem;
+    width: 50%;
+    border-radius: 1rem;
+    border: 0.2rem inset wheat;
+    float: left;
+}

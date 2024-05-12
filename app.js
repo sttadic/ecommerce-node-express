@@ -38,6 +38,11 @@ app.post("/newsletter", (req, res) => {
     console.log("Success");
 });
 
+
+app.get("/about", (req, res) => {
+    res.render("about");
+});
+
 app.get("/products", (req, res) => {
 
     connection.query("SELECT * FROM products", (error, data) => {

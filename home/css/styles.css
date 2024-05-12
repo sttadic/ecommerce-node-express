@@ -3,13 +3,14 @@ body {
     background-image: url("../images/background.jpg");
     background-attachment: fixed;
     background-blend-mode: overlay;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgb(255, 255, 255, 0);
     color: white;
     padding: 0;
     margin: 0;
     align-items: center;
     font-family: 'Courier New', Courier, monospace;
 }
+
 
 /* NAVBAR */
 /* Style of entire Bootstrap's Navbar element*/
@@ -43,6 +44,7 @@ body {
 .nav-item {
     margin-left: 1rem;
 }
+
 
 /* FOOTER */
 /* Footer element font size, background and padding set */
@@ -80,7 +82,8 @@ body {
     }
 }
 
-/* ABOUT US */
+
+/* ABOUT US PAGE */
 .about {
     margin: auto;
     width: 60vw;
@@ -88,15 +91,25 @@ body {
     
 }
 
+/* Text within paragraphs on 'about us' page */
 .about p {
     font-size: 1.2rem;
     text-shadow: 0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.7);
 }
 
+/* About us page image style*/
 .about img {
-    margin-right: 2rem;
+    margin: 0.5rem 2rem 1rem 0;
     width: 50%;
     border-radius: 1rem;
     border: 0.2rem inset wheat;
     float: left;
+}
+
+/* Proper scaling of image on smaller horizontal resolutions */
+@media only screen and (max-width: 1310px) {
+    .about img {
+        float: none;
+        width: 100%;
+    }
 }

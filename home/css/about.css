@@ -1,0 +1,29 @@
+/* Class that contains all contents of 'about us' page */
+.about {
+    margin: auto;
+    width: 60vw;
+    margin-bottom: 3rem;
+}
+
+/* Text within paragraphs */
+.about p {
+    font-size: 1.2rem;
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.7);
+}
+
+/* 'About us' page image style*/
+.about img {
+    margin: 0.5rem 2rem 1rem 0;
+    width: 50%;
+    border-radius: 1rem;
+    border: 0.2rem inset wheat;
+    float: left;
+}
+
+/* Image scaling on smaller horizontal resolutions */
+@media only screen and (max-width: 1310px) {
+    .about img {
+        float: none;
+        width: 100%;
+    }
+}

@@ -1,9 +1,11 @@
-
-        <%- include("includes/head.ejs") %>
+    <!-- Header -->
+    <%- include("includes/head.ejs") %>
+        <!-- Stylesheet relevant to a products page -->
         <link rel="stylesheet" href="css/products.css">
     </head>
 
     <body>
+        <!-- Navbar -->
         <%- include("includes/navbar.ejs") %>
 
         <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
@@ -29,7 +31,7 @@
                             </div>
                             <div class="row purchase-details">
                                 <div class="col-lg-6">
-                                    <h5>Price: €<%= products[i+1].price %></h5>
+                                    <h5>Price: €<%= products[i].price %></h5>
                                 </div>
                                 <div class="col-lg-6">
                                     <input type="number" min="1" max="99" value="1">
@@ -52,8 +54,8 @@
                                     <img src="images/<%= products[i+1].image %>" alt="product image">
                                 </div>
                                 <div class="col-lg-6 product-desc">
-                                    <h6><%= products[i].brand %></h6>
-                                    <h5><%= products[i].name %></h5>
+                                    <h6><%= products[i+1].brand %></h6>
+                                    <h5><%= products[i+1].name %></h5>
                                     <p>
                                         <%= products[i+1].description %>
                                     </p>
@@ -70,13 +72,12 @@
                             </div>
                         </div>
                         <!-- End of second inner grid -->
-
                     </div>
                     <% } %>
                 </div>    
             <% }; %>
         </div>
 
-        <%- include("includes/footer.ejs") %>
-    </body>
+    <!-- Footer -->
+    <%- include("includes/footer.ejs") %>
 </html>

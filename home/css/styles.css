@@ -1,4 +1,4 @@
-/* General style of a pages and background image */
+/* General style of all pages and background image */
 body {
     background-image: url("../images/background.jpg");
     background-attachment: fixed;
@@ -12,7 +12,7 @@ body {
 }
 
 /* NAVBAR */
-/* Modify style of Bootstrap's Navbar element*/
+/* Style of entire Bootstrap's Navbar element*/
 .navbar {
     font-size: 1.3rem;
     margin-bottom: 2%;
@@ -56,7 +56,7 @@ body {
 
 /* Size and margin of social media icons */
 .footer img {
-    width: 2.3rem;
+    width: 2.1rem;
     margin-right: 1rem;
 }
 

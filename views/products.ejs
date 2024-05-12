@@ -6,56 +6,77 @@
     <body>
         <%- include("includes/navbar.ejs") %>
 
+        <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
         <div class="container-fluid container-products">
+            <!-- Iterate over all products sent from the server -->
             <% for (let i = 0; i < products.length; i += 2) { %>
                 <div class="row">
                     <div class="col-lg-6">
+
+                        <!-- First inner grid for a particular product -->
                         <div class="container container-prod">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <img src="images/<%= products[i].image %>" alt="product image">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 product-desc">
+                                    <h6><%= products[i].brand %></h6>
+                                    <h5><%= products[i].name %></h5>
                                     <p>
                                         <%= products[i].description %>
                                     </p>
                                 </div>
                             </div>
-                            <div class="row price_add">
+                            <div class="row purchase-details">
                                 <div class="col-lg-6">
-                                    <h4><%= products[i].price %></h4>
+                                    <h5>Price: €<%= products[i+1].price %></h5>
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn">Add to Cart</button>
+                                    <input type="number" min="1" max="99" value="1">
+                                    <button class="btn" type="button">Add To Cart</button>
                                 </div>
                             </div>
                         </div>
+                        <!-- End of first inner grid -->
+
                     </div>
+
+                    <!-- To properly display 2 products per row, add second one only if another product is available on current iteration -->
+                    <% if (i + 1 < products.length) { %>
                     <div class="col-lg-6">
+
+                        <!-- Second inner grid for a particular product -->
                         <div class="container container-prod">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <img src="images/<%= products[i+1].image %>" alt="product image">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 product-desc">
+                                    <h6><%= products[i].brand %></h6>
+                                    <h5><%= products[i].name %></h5>
                                     <p>
                                         <%= products[i+1].description %>
                                     </p>
                                 </div>
                             </div>
-                            <div class="row price_add">
+                            <div class="row purchase-details">
                                 <div class="col-lg-6">
-                                    <h4><%= products[i+1].price %></h4>
+                                    <h5>Price: €<%= products[i+1].price %></h5>
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn">Add to Cart</button>
+                                    <input type="number" min="1" max="99" value="1">
+                                    <button class="btn" type="button">Add To Cart</button>
                                 </div>
                             </div>
                         </div>
+                        <!-- End of second inner grid -->
+
                     </div>
+                    <% } %>
                 </div>    
             <% }; %>
         </div>
+
         <%- include("includes/footer.ejs") %>
     </body>
 </html>

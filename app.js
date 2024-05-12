@@ -40,7 +40,7 @@ app.post("/newsletter", (req, res) => {
 
 app.get("/products", (req, res) => {
 
-    connection.query("SELECT image, description, price FROM products", (error, data) => {
+    connection.query("SELECT * FROM products", (error, data) => {
         if (error) {
             console.log("Error querying database: " + error);
         } else {

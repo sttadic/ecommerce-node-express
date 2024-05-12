@@ -1,32 +1,79 @@
+/* Setting width of container containing all products */
 .container-products {
     width: 78vw;
  }
 
+ /* Product images size and borders */
 .container-products img {
     width: 100%;
     border: 0.2rem groove white;
     margin-bottom: 1rem;
 }
 
+/* Class that defines style of grid system for each individual product on page */
 .container-prod {
     width: 95%;
-    outline: 0.5rem groove rgba(36, 1, 1, 0.5);
+    box-shadow: 1rem 1rem 0.5rem rgba(216, 216, 216, 0.5);
+    outline: 0.5rem groove rgba(194, 154, 154, 0.5);
     margin-bottom: 3rem;
     padding: 1rem;
+    background-color: rgb(15, 0, 0);
+    border-radius: 1rem;
 }
 
-.price_add {
+/* Style for element containing product name and description */
+.product-desc {
+    text-align: center;
+    max-height: 17rem;
+    overflow-y: auto;
+}
+
+/* Product title */
+.product-desc h5 {
+    font-weight: bold;
+}
+
+/* Product description paragraph*/
+.product-desc p {
+    font-style: italic;
+}
+
+/* Style for row containing price and add to cart button */
+.purchase-details {
     align-items: center;
     text-align: center;
 }
 
-.btn {
-    background-color: rgba(90, 0, 0, 0.3);
-    color: white;
-    border: 0.1rem solid white;
-    margin-bottom: 0.5rem;
+/* Style of heading/price element */
+.purchase-details h5 {
+    align-items: center;
+    margin-top: 0.5rem;
 }
 
-.btn:hover {
+/* Purchase quantity input element */
+input[type="number"] {
+    width: 4rem;
+    height: 2.3rem;
+    text-align: center;
+    border-radius: 0.3rem;
+    border: 0.1rem solid rgb(197, 130, 130);
+    font-weight: bold;
+}
+
+/* Arrows always visible. Source: https://stackoverflow.com/questions/25194631/is-it-possible-to-always-show-up-down-arrows-for-input-number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+/* 'Add to cart' button */
+.purchase-details .btn {
+    background-color: rgba(158, 23, 23, 0.3);
+    color: white;
+    border: 0.1rem solid white;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.purchase-details .btn:hover {
     outline: 0.2rem solid white;
 }

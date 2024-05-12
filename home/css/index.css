@@ -13,7 +13,7 @@
     }
 }
 
-/* Round corner of images */
+/* Round corners of images in carousel */
 .carousel img {
     border-radius: 1rem;
 }

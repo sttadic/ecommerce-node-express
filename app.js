@@ -29,27 +29,28 @@ connection.connect((err) => {
 app.use(express.static("home"));
 
 
-// Routes
+// Route to serve the 'home page'
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("index", {isHome: "active", isProducts: "", isAbout: ""});
 });
 
+// Route to handle 'newsletter' subscription
 app.post("/newsletter", (req, res) => {
     console.log("Success");
 });
 
-
+// Route for 'about us' page
 app.get("/about", (req, res) => {
-    res.render("about");
+    res.render("about", {isAbout: "active", isProducts: "", isHome: ""});
 });
 
+// Route that serves 'products' page
 app.get("/products", (req, res) => {
-
     connection.query("SELECT * FROM products", (error, data) => {
         if (error) {
             console.log("Error querying database: " + error);
         } else {
-            res.render("products", {products: data});
+            res.render("products", {products: data, isProducts: "active", isHome: "", isAbout: ""});
         }
     });
 });

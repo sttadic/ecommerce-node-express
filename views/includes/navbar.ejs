@@ -1,6 +1,6 @@
 <!-- Bootstrap "Navbar" component-->
 <!-- Class sticky-top added so navbar would always be visible, classes for background and foreground colours added to preserve the colour scheme of a site -->
-<!-- Custom class .container-nav adjusts margin of navbar elements -->
+<!-- Custom class .container-nav adjusts margin of navbar elements. -->
 <nav class="navbar navbar-expand-lg sticky-top" data-bs-theme="dark">
     <div class="container-fluid container-nav">
         <a class="navbar-brand" href="/">TheCoffeeCove</a>
@@ -11,13 +11,14 @@
         <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <!-- Dynamically add the 'active' class to navbar links based on which page is loaded -->
+                    <a class="nav-link <%= isHome %>" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/products">Products</a>
+                    <a class="nav-link <%= isProducts %>" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About Us</a>
+                    <a class="nav-link <%= isAbout %>" href="/about">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sign In</a>

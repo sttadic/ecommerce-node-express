@@ -15,7 +15,7 @@
             <!-- Iterate over all products sent from the server -->
             <% for (let i = 0; i < products.length; i += 2) { %>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-outer">
 
                         <!-- First inner grid for a particular product -->
                         <div class="container container-prod">
@@ -47,7 +47,7 @@
 
                     <!-- To properly display 2 products per row, add second one only if another product is available on current iteration -->
                     <% if (i + 1 < products.length) { %>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-outer">
 
                         <!-- Second inner grid for a particular product -->
                         <div class="container container-prod">

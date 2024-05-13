@@ -1,6 +1,7 @@
 /* Setting width of container containing all products */
 .container-products {
     width: 78vw;
+    text-align: center;
  }
 
  /* Product images size and borders */
@@ -8,6 +9,23 @@
     width: 100%;
     border: 0.2rem groove white;
     margin-bottom: 1rem;
+}
+
+/* Media queries to control product's containers and images scale properly with decrease in horizontal pixel count */
+@media only screen and (max-width: 1600px) {
+    .col-outer {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    .container-products img {
+        width: 70%;
+    }
+} 
+
+@media only screen and (max-width: 991px) {
+    .container-products img {
+        width: 100%;
+    }
 }
 
 /* Class that defines style of grid system for each individual product on page */

@@ -1,14 +1,18 @@
 /* Class that contains all contents of 'about us' page */
 .about {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: auto;
     width: 60vw;
     margin-bottom: 3rem;
 }
 
+.about h2 {
+    font-style: italic;
+    text-align: center;
+}
+
 /* Text within paragraphs */
 .about p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 /* 'About us' page image style*/
@@ -20,7 +24,7 @@
     float: left;
 }
 
-/* Image scaling on smaller horizontal resolutions */
+/* Media query for image scaling */
 @media only screen and (max-width: 1310px) {
     .about img {
         float: none;

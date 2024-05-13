@@ -9,12 +9,16 @@ body {
     margin: 0;
     align-items: center;
     font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
 /* NAVBAR */
 /* Style of entire Bootstrap's Navbar element*/
 .navbar {
+    width: 100%;
     font-size: 1.3rem;
     margin-bottom: 2%;
     background-image: url("../images/background.jpg");
@@ -54,6 +58,7 @@ body {
     background-color: rgba(90, 0, 0, 0.2);
     outline: 0.5rem groove rgba(202, 148, 148, 0.5);
     padding: 1rem;
+    flex-shrink: 0;
 }
 
 /* Size and margin of social media icons */

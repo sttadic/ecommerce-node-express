@@ -26,6 +26,7 @@
     text-align: center;
     max-height: 17rem;
     overflow-y: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Product title */
@@ -35,6 +36,7 @@
 
 /* Product description paragraph*/
 .product-desc p {
+    margin-top: 2rem;
     font-style: italic;
 }
 
@@ -71,7 +73,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: rgba(158, 23, 23, 0.3);
     color: white;
     border: 0.1rem solid white;
-    font-family:'Times New Roman', Times, serif;
+    margin-bottom: 0.2rem;
 }
 
 .purchase-details .btn:hover {

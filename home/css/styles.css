@@ -81,3 +81,88 @@ body {
         margin-bottom: 1.5rem;
     }
 }
+
+
+/* LOGIN POPUP */
+/* Class added to all elements with 'blur' class on popup activation that blurs and deactivates content */
+.blur-active {
+    filter: blur(0.1rem);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Popup style */
+.popup {
+    font-family: 'Times New Roman', Times, serif;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Class that is added to a popup on activation */
+.popup-active {
+    display: block;
+    height: 20rem;
+    width: 30rem;
+    background-image: url("../images/login_bg.jpg");
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(54, 4, 4, 0.459);
+    border: 0.3rem outset rgb(211, 199, 199);
+    box-shadow: 2rem 2rem 0.5rem rgb(0, 0, 0);
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+/* Popup close sign (x) */
+.popup-close {
+    float: right;
+    padding-right: 0.6rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.popup-close:hover {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Content within popup */
+.popup-content {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* Username and password input elements */
+.popup-content input {
+    margin: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+    outline: 0.1rem solid white;
+}
+
+.popup-content input::placeholder {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Popup Sign In button */
+.popup-content button {
+    padding: 0.5rem;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    border: 0.3rem groove rgb(255, 255, 255);
+    background-color: rgba(66, 5, 5, 0.788);
+    color: white;
+    box-shadow: 0.8rem 0.8rem 0.5rem rgb(0, 0, 0);
+}
+
+.popup-content button:hover {
+    outline: 0.1rem solid white;
+    font-weight: bold;
+}

@@ -1,9 +1,10 @@
-<div class="overlay"></div>
-<div class="popup">
-    <div class="popup-content">
+<!-- Log In popup -->
+<div id="popup" class="popup">
+    <span class="popup-close" onclick="togglePopup()">X</span>
+    <div class="container popup-content">
         <form action="/login" method="post">
-            <input type="text">
-            <input type="password">
+            <input id="username" type="text" placeholder="Username" autocomplete="off" autofocus spellcheck="false"><br>
+            <input id="password" type="password" placeholder="Password" autocomplete="off"><br>
             <button type="submit">Sign In</button>
         </form>
     </div>

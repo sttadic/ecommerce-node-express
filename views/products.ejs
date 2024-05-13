@@ -7,9 +7,11 @@
     <body>
         <!-- Navbar -->
         <%- include("includes/navbar.ejs") %>
+        <!-- Login Popup -->
+        <%- include("includes/popup.ejs") %>
 
         <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
-        <div class="container-fluid container-products">
+        <div class="container-fluid container-products blur">
             <!-- Iterate over all products sent from the server -->
             <% for (let i = 0; i < products.length; i += 2) { %>
                 <div class="row">

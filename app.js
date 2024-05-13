@@ -2,14 +2,27 @@
 const express = require("express");
 const app = express();
 
-// Import bodyparser and set urlencoded parser as middleware for the application with extended parsing mode (nested objects)
+// Import and configure express session middleware
+const session = require("express-session");
+app.use(session({
+    name: "sid",                // session name
+    resave: false,              // do not store sessions that are not modified during the request
+    saveUninitialized: false,   // do not store new unmodified sessions (with no data)
+    secret: "secret_key",       // dummy string used to sign sid cookie
+    cookie: {
+        maxAge: 7200000,        // maximum age of a cookie in milliseconds (set to two hours)
+        sameSite: true,         // browser will accept cookies only from the same domain
+    }
+}));
+
+// Import bodyparser and use urlencoded parser as middleware for the application with extended parsing mode
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up the view engine
 app.set("view engine", "ejs");
 
-// Import mysql2 module and create a connection to the database
+// Import mysql2 module, pass in a config object and create a connection to the database
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
     host: "localhost",
@@ -27,6 +40,7 @@ connection.connect((err) => {
 
 // Serve static files from a public directory
 app.use(express.static("home"));
+
 
 
 // Route to serve the 'home page'

@@ -76,7 +76,7 @@
 }
 
 /* Define size, margins and borders of input element within newsletter */
-input[type="text"] {
+.news-email {
     width: 40%;
     margin: 2rem;
     outline: 0.5rem groove rgba(202, 148, 148, 0.5);
@@ -95,12 +95,12 @@ input[type="text"] {
         width: 70%;
     }
 
-    input[type="email"] {
+    .news-email {
         width: 70%;
     }
 }
 
 /* Opacity for input placeholder */
-input[type="email"]::placeholder {
+.news-email::placeholder {
     opacity: 0.8;
 }

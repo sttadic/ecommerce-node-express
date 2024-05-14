@@ -15,11 +15,12 @@ app.use(session({
     }
 }));
 
-// Import bodyparser and use urlencoded parser as middleware for the application with extended parsing mode
+// Import bodyparser and use json and urlencoded parser as middleware for the application with extended parsing mode
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ 
     extended: true 
 }));
+app.use(bodyParser.json());
 
 // Set up the view engine
 app.set("view engine", "ejs");
@@ -86,11 +87,14 @@ app.post("/login", (req, res) => {
         } else {
             // Pass in request object properties and array of objects (data) from the database into auth module
             const authenticated = auth(loginData.username, loginData.password, data);
-            // If user is authenticated, store customerID in a session object
+            // If user is authenticated, store customerID in a session object and respond with status 200
             if (authenticated) {
                 req.session.userID = authenticated.customerID;
-                return  res.redirect("/");
+                return res.status(200).send("Authenticated");
             }
+            // If not authenticated, set response status to 401 and respond with a JSON containing error message
+            res.status(401);
+            res.json({ error: "Invalid username/password" });
         }
     });
 });

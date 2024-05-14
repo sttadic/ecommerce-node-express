@@ -12,16 +12,16 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <!-- Dynamically add the 'active' class to navbar links based on which page is loaded -->
-                    <a class="nav-link <%= isHome %>" aria-current="page" href="/">Home</a>
+                    <a class="nav-link <%= activePage === "home" ? "active" : "" %>" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= isProducts %>" href="/products">Products</a>
+                    <a class="nav-link <%= activePage === "products" ? "active" : "" %>" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= isAbout %>" href="/about">About Us</a>
+                    <a class="nav-link <%= activePage === "about" ? "active" : "" %>" href="/about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="togglePopup()">Sign In</a>
+                    <a class="nav-link" href="#" onclick="togglePopup()"><%= isLoggedIn %></a>
                 </li>
             </ul>
         </div>

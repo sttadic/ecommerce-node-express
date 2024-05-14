@@ -50,7 +50,12 @@ const auth = require("./utils/auth.js")
 
 // Route to serve the landing page
 app.get("/", (req, res) => {
-    res.render("index", {isHome: "active", isProducts: "", isAbout: ""});
+    // Check whether user is logged in and assign status to loginStatus variable accordingly
+    let loginStatus = "Log In";
+    if (req.session.userID) {
+        loginStatus = "Log Out"
+    };
+    res.render("index", {activePage: "home", isLoggedIn: loginStatus});
 });
 
 // Route to handle 'newsletter' subscription
@@ -60,16 +65,28 @@ app.post("/newsletter", (req, res) => {
 
 // Route for 'about us' page
 app.get("/about", (req, res) => {
-    res.render("about", {isAbout: "active", isProducts: "", isHome: ""});
+    // Check whether user is logged in and assign status to loginStatus variable accordingly
+    let loginStatus = "Log In";
+    if (req.session.userID) {
+        loginStatus = "Log Out"
+    };
+    
+    res.render("about", {activePage: "about", isLoggedIn: loginStatus});
 });
 
 // Route that serves 'products' page
 app.get("/products", (req, res) => {
+    // Check whether user is logged in and assign status to loginStatus variable accordingly
+    let loginStatus = "Log In";
+    if (req.session.userID) {
+        loginStatus = "Log Out"
+    };
+
     connection.query("SELECT * FROM products", (error, data) => {
         if (error) {
             console.log("Error querying database: " + error);
         } else {
-            res.render("products", {products: data, isProducts: "active", isHome: "", isAbout: ""});
+            res.render("products", {activePage: "products", products: data, isLoggedIn: loginStatus});
         }
     });
 });

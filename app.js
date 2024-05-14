@@ -120,6 +120,14 @@ app.post("/login", (req, res) => {
     });
 });
 
+// Logout route
+app.get("/logout", (req, res) => {
+    // Delete userID from session
+    if (req.session.userID) {
+        delete req.session.userID;
+        res.redirect("/");
+    }
+});
 
 // Start a server
 app.listen(3000, () => {

@@ -11,17 +11,22 @@
         <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <!-- Dynamically add the 'active' class to navbar links based on which page is loaded -->
-                    <a class="nav-link <%= activePage === "home" ? "active" : "" %>" aria-current="page" href="/">Home</a>
+                    <!-- Dynamically add the 'active' class to navbar links depending on which page is loaded -->
+                    <a class="nav-link <%= activePage === " home" ? "active" : "" %>" aria-current="page"
+                        href="/">Home
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= activePage === "products" ? "active" : "" %>" href="/products">Products</a>
+                    <a class="nav-link <%= activePage === " products" ? "active" : "" %>" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= activePage === "about" ? "active" : "" %>" href="/about">About Us</a>
+                    <a class="nav-link <%= activePage === " about" ? "active" : "" %>" href="/about">About Us</a>
                 </li>
+                <!-- Value of 'href' and 'onclick' attribute changes based on login status -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="togglePopup()"><%= isLoggedIn %></a>
+                    <a class="nav-link" id="isLoggedIn" href="<%= isLoggedIn === " Log Out" ? "/logout" : "#" %>"
+                        onclick=<%= isLoggedIn==="Log In" ? "togglePopup()" : "" %> ><%= isLoggedIn %>
+                    </a>
                 </li>
             </ul>
         </div>

@@ -81,7 +81,8 @@
                 <!-- Newsletter -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <form action="/newsletter" method="post" class="newsletter">
+                        <!-- Dummy newsletter form validated client-side (scripts.js) -->
+                        <form action="" method="" class="newsletter">
                             <h4>
                                 Stay in the Loop for Exclusive Coffee Deals! Sign up for our newsletter and be the first to know 
                                 about special offers, new arrivals, and brewing tips.
@@ -98,14 +99,5 @@
         
         <!-- Footer -->
         <%- include("includes/footer.ejs") %>
-
-        <script>
-            // Assign a random 'carousel item' and 'carousel indicator' an 'active' class on page load
-            let randomImg = Math.floor(Math.random() * 3);
-            let carouselItems = document.querySelectorAll(".carousel-item");
-            let carouselIndicators = document.querySelectorAll(".indicator");
-            carouselItems[randomImg].classList.add("active");
-            carouselIndicators[randomImg].classList.add("active");
-        </script>
     </body>
 </html>

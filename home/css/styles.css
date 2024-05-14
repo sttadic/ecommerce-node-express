@@ -49,6 +49,11 @@ body {
     margin-left: 1rem;
 }
 
+/* Override bootstrap pseudo-class for currently active links" */
+.nav-link:active {
+    color: initial;
+}
+
 
 /* FOOTER */
 /* Footer element font size, background and padding set */

@@ -47,43 +47,41 @@ app.use(express.static("home"));
 // Import authentication module
 const auth = require("./utils/auth.js")
 
+// Custom middleware that checks if userID exists in a session and stores a string ('Log Out' or 'Log In') into a res.locals object
+app.use((req, res, next) => {
+    const { userID } = req.session;
+    res.locals.loginStatus = "Log In";
+    if (userID) {
+        res.locals.loginStatus = "Log Out";
+    }
+    next();
+});
+
 
 // Route to serve the landing page
 app.get("/", (req, res) => {
-    // Check whether user is logged in and assign status to loginStatus variable
-    let loginStatus = "Log In";
-    if (req.session.userID) {
-        loginStatus = "Log Out"
-    };
+    // Extract loginStatus from res.locals object
+    const { loginStatus } = res.locals;
 
     // Render home page with activePage status to highlight navbar link and login status to display 'Log In'/'Log out' accordingly
     res.render("index", {activePage: "home", isLoggedIn: loginStatus});
 });
 
-// Route to handle 'newsletter' subscription
-app.post("/newsletter", (req, res) => {
-    console.log("Success");
-});
 
 // Route for 'about us' page
 app.get("/about", (req, res) => {
-    // Check whether user is logged in and assign status to loginStatus variable accordingly
-    let loginStatus = "Log In";
-    if (req.session.userID) {
-        loginStatus = "Log Out"
-    };
+     // Extract loginStatus from res.locals object
+    const { loginStatus } = res.locals;
     
     // Render about us page
     res.render("about", {activePage: "about", isLoggedIn: loginStatus});
 });
 
+
 // Route that serves 'products' page
 app.get("/products", (req, res) => {
-    // Check whether user is logged in and assign status to loginStatus variable accordingly
-    let loginStatus = "Log In";
-    if (req.session.userID) {
-        loginStatus = "Log Out"
-    };
+    // Extract loginStatus from res.locals object
+    const { loginStatus } = res.locals;
 
     // Query the database for products information and render products template with relevant data
     connection.query("SELECT * FROM products", (error, data) => {
@@ -94,6 +92,7 @@ app.get("/products", (req, res) => {
         }
     });
 });
+
 
 // Login route
 app.post("/login", (req, res) => {
@@ -120,6 +119,7 @@ app.post("/login", (req, res) => {
     });
 });
 
+
 // Logout route
 app.get("/logout", (req, res) => {
     // Delete userID from session
@@ -128,6 +128,8 @@ app.get("/logout", (req, res) => {
         res.redirect("/");
     }
 });
+
+
 
 // Start a server
 app.listen(3000, () => {

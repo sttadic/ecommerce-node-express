@@ -1,6 +1,6 @@
-// Logout confirmation logic
+// Logout confirmation logic (navbar.ejs)
 let logout = document.querySelector(".log-out");
-// If '.log-out' class exists (added dynamically depending on login status)
+// Check if '.log-out' class exists (added dynamically to link tag depending on login status)
 if (logout) {
     // Listen for click event
     logout.addEventListener("click", function(event) {
@@ -13,3 +13,11 @@ if (logout) {
         }
     });
 }
+
+
+// Assign a random 'carousel item' and 'carousel indicator' an 'active' class on page load (index.ejs)
+let randomImg = Math.floor(Math.random() * 3);
+let carouselItems = document.querySelectorAll(".carousel-item");
+let carouselIndicators = document.querySelectorAll(".indicator");
+carouselItems[randomImg].classList.add("active");
+carouselIndicators[randomImg].classList.add("active");

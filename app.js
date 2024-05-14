@@ -89,8 +89,8 @@ app.post("/login", (req, res) => {
             // If user is authenticated, store customerID in a session object
             if (authenticated) {
                 req.session.userID = authenticated.customerID;
+                return  res.redirect("/");
             }
-            return  res.redirect("/");
         }
     });
 });

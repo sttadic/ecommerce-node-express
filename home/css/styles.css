@@ -157,7 +157,7 @@ body {
 /* Popup Sign In button */
 .popup-content button {
     padding: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     font-size: 1.2rem;
     border-radius: 0.5rem;
     border: 0.3rem groove rgb(255, 255, 255);
@@ -169,4 +169,11 @@ body {
 .popup-content button:hover {
     outline: 0.1rem solid white;
     font-weight: bold;
+}
+
+/* Error message */
+.popup-content p {
+    margin-top: 1rem;
+    padding: 0;
+    font-size: 1.2rem;
 }

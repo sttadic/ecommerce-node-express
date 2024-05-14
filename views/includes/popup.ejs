@@ -2,10 +2,11 @@
 <div id="popup" class="popup">
     <span class="popup-close" onclick="togglePopup()">X</span>
     <div class="container popup-content">
-        <form action="/login" method="post">
+        <form action="/login" method="post" id="login">
             <input id="username" name="username" type="text" placeholder="Username" autocomplete="off" autofocus spellcheck="false"><br>
             <input id="password" name="password" type="password" placeholder="Password" autocomplete="off"><br>
-            <button type="submit">Sign In</button>
+            <button type="submit" onclick="loginError()">Sign In</button>
         </form>
+        <p id="login-error"></p>
     </div>
 </div>

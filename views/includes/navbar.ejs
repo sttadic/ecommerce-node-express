@@ -28,6 +28,10 @@
                         onclick=<%= isLoggedIn==="Log In" ? "togglePopup()" : "" %> ><%= isLoggedIn %>
                     </a>
                 </li>
+                <!-- Logic to display welcome <customerName> text after log in -->
+                <li class="nav-item">
+                    <p class="user"><%= customerName ? "Welcome " + customerName : "" %></p>
+                </li>
             </ul>
         </div>
     </div>

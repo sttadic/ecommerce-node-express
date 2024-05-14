@@ -64,7 +64,8 @@ app.get("/", (req, res) => {
     const { loginStatus } = res.locals;
 
     // Render home page with activePage status to highlight navbar link and login status to display 'Log In'/'Log out' accordingly
-    res.render("index", {activePage: "home", isLoggedIn: loginStatus});
+    // Also display customer name if logged in
+    res.render("index", {activePage: "home", isLoggedIn: loginStatus, customerName: req.session.userName});
 });
 
 
@@ -73,8 +74,8 @@ app.get("/about", (req, res) => {
      // Extract loginStatus from res.locals object
     const { loginStatus } = res.locals;
     
-    // Render about us page
-    res.render("about", {activePage: "about", isLoggedIn: loginStatus});
+    // Render about us page with all relevant information
+    res.render("about", {activePage: "about", isLoggedIn: loginStatus, customerName: req.session.userName});
 });
 
 
@@ -83,12 +84,12 @@ app.get("/products", (req, res) => {
     // Extract loginStatus from res.locals object
     const { loginStatus } = res.locals;
 
-    // Query the database for products information and render products template with relevant data
+    // Query database for products information and render products template with relevant data
     connection.query("SELECT * FROM products", (error, data) => {
         if (error) {
             console.log("Error querying database: " + error);
         } else {
-            res.render("products", {activePage: "products", products: data, isLoggedIn: loginStatus});
+            res.render("products", {activePage: "products", products: data, isLoggedIn: loginStatus, customerName: req.session.userName});
         }
     });
 });
@@ -107,9 +108,10 @@ app.post("/login", (req, res) => {
         } else {
             // Pass in request object properties and array of objects (data) from the database into auth module
             const authenticated = auth(loginData.username, loginData.password, data);
-            // If user is authenticated, store customerID in a session object and respond with status 200
+            // If user is authenticated, store customerID and name in a session object and respond with status 200
             if (authenticated) {
                 req.session.userID = authenticated.customerID;
+                req.session.userName = authenticated.name;
                 return res.status(200).send("Authenticated");
             }
             // If not authenticated, set response status to 401 and respond with a JSON containing error message
@@ -122,9 +124,10 @@ app.post("/login", (req, res) => {
 
 // Logout route
 app.get("/logout", (req, res) => {
-    // Delete userID from session
+    // Delete userID and userName from session
     if (req.session.userID) {
         delete req.session.userID;
+        delete req.session.userName;
         res.redirect("/");
     }
 });

@@ -17,7 +17,7 @@ function togglePopup() {
 
 
 // AJAX login popup form submission
-// Listen for the click event on submit button
+// Listen for the click event on submit button of login popup
 document.getElementById("login-submit").addEventListener("click", function(event) {
     // Prevent default form submission
     event.preventDefault();

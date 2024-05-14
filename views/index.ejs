@@ -87,9 +87,10 @@
                                 Stay in the Loop for Exclusive Coffee Deals! Sign up for our newsletter and be the first to know 
                                 about special offers, new arrivals, and brewing tips.
                             </h4>
-                            <input type="email" required placeholder="Email Address">
+                            <input type="text" id="news-email" required placeholder="Email Address" spellcheck="false">
                             <br>
-                            <button type="submit" class="btn">Submit</button>
+                            <button type="submit" class="btn" onclick="emailValidator(event)">Submit</button>
+                            <h5 id="news-message" class="news-message"></h5>
                         </form>
                     </div>
                 </div>

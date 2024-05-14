@@ -21,3 +21,24 @@ let carouselItems = document.querySelectorAll(".carousel-item");
 let carouselIndicators = document.querySelectorAll(".indicator");
 carouselItems[randomImg].classList.add("active");
 carouselIndicators[randomImg].classList.add("active");
+
+
+// Client-side email validation using regular expressions
+function emailValidator(event) {
+    // Prevent form submission
+    event.preventDefault();
+    // Initialze variables, email stores trimmed (whitespace removed) input value (email address)
+    let message = document.getElementById("news-message");
+    let email = document.getElementById("news-email").value.trim();
+    // Must start with at least one alphabetic, numeric or _ character with optional .(dot) and - (hyphen) but not at the very start or before @, 
+    // then follows mandatory @ literal. After that optional one or many alphabetic, numeric, _ . - chars. Follows mandatory combination of 
+    // alphabetic, numeric and _ chars, and finaly, after . (dot) 2-5 mandatory alphabetic chars representing top level domain (TLD)
+    let validPattern = /^(\w+\.*-*)?\w+@(\w+\.*-*)?\w+\.[a-zA-Z]{2,5}$/;
+
+    // Validate submitted email by comparing it against regex pattern
+    if (validPattern.test(email)) {
+        message.textContent = "Thank you for Subscribing!";
+    } else {
+        message.textContent = "Please enter valid e-mail address";
+    }
+}

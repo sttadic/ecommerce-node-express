@@ -15,7 +15,7 @@ app.use(session({
     }
 }));
 
-// Import bodyparser and use json and urlencoded parser as middleware for the application with extended parsing mode
+// Import bodyparser and use json and urlencoded parser with extented parsing mode as middleware for the application
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ 
     extended: true 
@@ -50,11 +50,13 @@ const auth = require("./utils/auth.js")
 
 // Route to serve the landing page
 app.get("/", (req, res) => {
-    // Check whether user is logged in and assign status to loginStatus variable accordingly
+    // Check whether user is logged in and assign status to loginStatus variable
     let loginStatus = "Log In";
     if (req.session.userID) {
         loginStatus = "Log Out"
     };
+
+    // Render home page with activePage status to highlight navbar link and login status to display 'Log In'/'Log out' accordingly
     res.render("index", {activePage: "home", isLoggedIn: loginStatus});
 });
 
@@ -71,6 +73,7 @@ app.get("/about", (req, res) => {
         loginStatus = "Log Out"
     };
     
+    // Render about us page
     res.render("about", {activePage: "about", isLoggedIn: loginStatus});
 });
 
@@ -82,6 +85,7 @@ app.get("/products", (req, res) => {
         loginStatus = "Log Out"
     };
 
+    // Query the database for products information and render products template with relevant data
     connection.query("SELECT * FROM products", (error, data) => {
         if (error) {
             console.log("Error querying database: " + error);
@@ -96,7 +100,7 @@ app.post("/login", (req, res) => {
     // Store request object in loginData constant
     const loginData = req.body;
 
-    // Query the database for usernames and passwords of all customers
+    // Query the database for data of all customers
     connection.query("SELECT * FROM customers", function(error, data) {
         if (error) {
             console.log("Error retrieving data from database: ", error);

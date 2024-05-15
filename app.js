@@ -69,7 +69,7 @@ app.get("/", (req, res) => {
 });
 
 
-// Route for 'about us' page
+// Route for 'About us' page
 app.get("/about", (req, res) => {
      // Extract loginStatus from res.locals object
     const { loginStatus } = res.locals;
@@ -79,7 +79,7 @@ app.get("/about", (req, res) => {
 });
 
 
-// Route that serves 'products' page
+// Route that serves 'Products' page
 app.get("/products", (req, res) => {
     // Extract loginStatus from res.locals object
     const { loginStatus } = res.locals;
@@ -95,6 +95,34 @@ app.get("/products", (req, res) => {
 });
 
 
+// Route that handles adding products to the cart (session)
+app.post("/addToCart", (req, res) => {
+    // Extract data from the form submission
+    const prodID = req.body.productID;
+    const prodQty = req.body.quantity;
+
+    // Query database for name and price of a particular product
+    connection.query("SELECT name, price FROM products WHERE productID = ?", [prodID], (error, data) => {
+        if (error) {
+            console.error("Error retrieving data from database: ", error);
+            res.status(500).send("Error retrieving data from database!");
+        } else {
+            // Store data in a session
+            req.session.cart = {
+                productID: prodID,
+                productName: data[0].name,
+                productQty: prodQty,
+                productPrice: data[0].price
+            };
+            // Send JSON as response containing session cart data
+            res.status(200);
+            res.json(req.session.cart);
+        }
+    });
+    
+});
+
+
 // Login route
 app.post("/login", (req, res) => {
     // Store request object in loginData constant
@@ -103,7 +131,7 @@ app.post("/login", (req, res) => {
     // Query the database for data of all customers
     connection.query("SELECT * FROM customers", function(error, data) {
         if (error) {
-            console.log("Error retrieving data from database: ", error);
+            console.error("Error retrieving data from database: ", error);
             res.status(500).send("Error retrieving data from database!");
         } else {
             // Pass in request object properties and array of objects (data) from the database into auth module

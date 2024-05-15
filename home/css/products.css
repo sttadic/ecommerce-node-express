@@ -71,7 +71,7 @@
 }
 
 /* Purchase quantity input element */
-input[type="number"] {
+.quantity {
     width: 4rem;
     height: 2.3rem;
     text-align: center;
@@ -81,8 +81,8 @@ input[type="number"] {
 }
 
 /* Arrows always visible. Source: https://stackoverflow.com/questions/25194631/is-it-possible-to-always-show-up-down-arrows-for-input-number */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {  
+.quantity::-webkit-inner-spin-button, 
+.quantity::-webkit-outer-spin-button {  
    opacity: 1;
 }
 
@@ -173,6 +173,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: bold;
 }
 
+/* Button that removes individual item */
 .prod-remove {
     padding: 0 0.2rem 0 0.2rem;
     background-color: bisque;
@@ -186,4 +187,18 @@ input[type=number]::-webkit-outer-spin-button {
     color: white;
     outline: 0.1rem solid white;
     font-weight: bold;
+}
+
+.quantity-cart {
+    width: 3rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 0.3rem;
+    border: 0.1rem solid rgb(197, 130, 130);
+    font-weight: bold;
+}
+
+.quantity-cart::-webkit-inner-spin-button, 
+.quantity-cart::-webkit-outer-spin-button {  
+   opacity: 1;
 }

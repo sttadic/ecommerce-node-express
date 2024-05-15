@@ -65,7 +65,7 @@ app.get("/", (req, res) => {
 
     // Render home page with activePage status to highlight navbar link and login status to display 'Log In'/'Log out' accordingly
     // Include customer name from the current session
-    res.render("index", {activePage: "home", isLoggedIn: loginStatus, customerName: req.session.userName});
+    return res.status(200).render("index", {activePage: "home", isLoggedIn: loginStatus, customerName: req.session.userName});
 });
 
 
@@ -75,7 +75,7 @@ app.get("/about", (req, res) => {
     const { loginStatus } = res.locals;
     
     // Render about us page with all relevant information
-    res.render("about", {activePage: "about", isLoggedIn: loginStatus, customerName: req.session.userName});
+    return res.status(200).render("about", {activePage: "about", isLoggedIn: loginStatus, customerName: req.session.userName});
 });
 
 
@@ -88,8 +88,9 @@ app.get("/products", (req, res) => {
     connection.query("SELECT * FROM products", (error, data) => {
         if (error) {
             console.log("Error querying database: " + error);
+            return res.status(500).send("Error retrieving data from database!");
         } else {
-            res.render("products", {activePage: "products", products: data, isLoggedIn: loginStatus, customerName: req.session.userName});
+            return res.status(200).render("products", {activePage: "products", products: data, isLoggedIn: loginStatus, customerName: req.session.userName});
         }
     });
 });
@@ -115,8 +116,7 @@ app.post("/addToCart", (req, res) => {
                 productPrice: data[0].price
             };
             // Send JSON as response containing session cart data
-            res.status(200);
-            res.json(req.session.cart);
+            return res.status(200).json(req.session.cart);
         }
     });
     
@@ -132,7 +132,7 @@ app.post("/login", (req, res) => {
     connection.query("SELECT * FROM customers", function(error, data) {
         if (error) {
             console.error("Error retrieving data from database: ", error);
-            res.status(500).send("Error retrieving data from database!");
+            return res.status(500).send("Error retrieving data from database!");
         } else {
             // Pass in request object properties and array of objects (data) from the database into auth module
             const authenticated = auth(loginData.username, loginData.password, data);
@@ -140,11 +140,10 @@ app.post("/login", (req, res) => {
             if (authenticated) {
                 req.session.userID = authenticated.customerID;
                 req.session.userName = authenticated.name;
-                return res.status(200).send("Authenticated");
+                return res.status(200).send();
             }
-            // If not authenticated, set response status to 401 and send error message as JSON response
-            res.status(401);
-            res.json({ error: "Invalid username/password" });
+            // If not authenticated, set response status to 401 and send response body as JSON
+            return res.status(401).json({ error: "Invalid username/password" });
         }
     });
 });
@@ -156,7 +155,7 @@ app.get("/logout", (req, res) => {
     if (req.session.userID) {
         delete req.session.userID;
         delete req.session.userName;
-        res.redirect("/");
+        return res.status(302).redirect("/");
     }
 });
 

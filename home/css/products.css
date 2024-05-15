@@ -189,7 +189,8 @@
     font-weight: bold;
 }
 
-.quantity-cart {
+/* Cart input element for quantity */
+.cart-quantity {
     width: 3rem;
     height: 2rem;
     text-align: center;
@@ -198,7 +199,7 @@
     font-weight: bold;
 }
 
-.quantity-cart::-webkit-inner-spin-button, 
-.quantity-cart::-webkit-outer-spin-button {  
+.cart-quantity::-webkit-inner-spin-button, 
+.cart-quantity::-webkit-outer-spin-button {  
    opacity: 1;
 }

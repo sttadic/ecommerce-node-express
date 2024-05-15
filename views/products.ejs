@@ -1,86 +1,123 @@
-    <!-- Header -->
-    <%- include("includes/head.ejs") %>
-        <!-- Stylesheet relevant to a products page -->
-        <link rel="stylesheet" href="css/products.css">
+<!-- Header -->
+<%- include("includes/head.ejs") %>
+    <!-- Stylesheet relevant to a products page -->
+    <link rel="stylesheet" href="css/products.css">
     </head>
 
     <body>
         <!-- Navbar -->
         <%- include("includes/navbar.ejs") %>
-        <!-- Login Popup -->
-        <%- include("includes/popup.ejs") %>
+            <!-- Login Popup -->
+            <%- include("includes/popup.ejs") %>
 
-        <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
-        <div class="container-fluid container-products blur">
-            <!-- Iterate over all products sent from the server -->
-            <% for (let i = 0; i < products.length; i += 2) { %>
-                <div class="row">
-                    <div class="col-lg-6 col-outer">
+                <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
+                <div class="container-fluid container-products blur">
+                    <!-- Iterate over all products sent from the server -->
+                    <% for (let i=0; i < products.length; i +=2) { %>
+                        <div class="row">
+                            <!-- First outer column -->
+                            <div class="col-lg-6 col-outer">
+                                <!-- First inner grid for a particular product -->
+                                <div class="container container-prod">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="product-img" src="images/<%= products[i].image %>"
+                                                alt="product image">
+                                        </div>
+                                        <div class="col-lg-6 product-desc">
+                                            <h6>
+                                                <%= products[i].brand %>
+                                            </h6>
+                                            <h5>
+                                                <%= products[i].name %>
+                                            </h5>
+                                            <p>
+                                                <%= products[i].description %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row purchase-details">
+                                        <div class="col-lg-6">
+                                            <h5>Price: €<%= products[i].price %>
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="number" min="1" max="99" value="1">
+                                            <button class="btn" type="button">Add To Cart</button>
+                                            <!-- Cart -->
+                                            <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasWithBothOptions"
+                                                aria-controls="offcanvasWithBothOptions">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of first inner grid -->
+                            </div>
+                            <!-- End of first outer column -->
 
-                        <!-- First inner grid for a particular product -->
-                        <div class="container container-prod">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <img src="images/<%= products[i].image %>" alt="product image">
+                            <!-- To properly display 2 products per row, add second one only if another product is available on current iteration -->
+                            <% if (i + 1 < products.length) { %>
+                                <!-- Second outer column -->
+                                <div class="col-lg-6 col-outer">
+                                    <!-- Second inner grid for a particular product -->
+                                    <div class="container container-prod">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <img class="product-img" src="images/<%= products[i+1].image %>"
+                                                    alt="product image">
+                                            </div>
+                                            <div class="col-lg-6 product-desc">
+                                                <h6>
+                                                    <%= products[i+1].brand %>
+                                                </h6>
+                                                <h5>
+                                                    <%= products[i+1].name %>
+                                                </h5>
+                                                <p>
+                                                    <%= products[i+1].description %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row purchase-details">
+                                            <div class="col-lg-6">
+                                                <h5>Price: €<%= products[i+1].price %>
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="number" min="1" max="99" value="1">
+                                                <button class="btn" type="button">Add To Cart</button>
+                                                <!-- Cart -->
+                                                <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
+                                                    data-bs-target="#offcanvasWithBothOptions"
+                                                    aria-controls="offcanvasWithBothOptions">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End of second inner grid -->
                                 </div>
-                                <div class="col-lg-6 product-desc">
-                                    <h6><%= products[i].brand %></h6>
-                                    <h5><%= products[i].name %></h5>
-                                    <p>
-                                        <%= products[i].description %>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row purchase-details">
-                                <div class="col-lg-6">
-                                    <h5>Price: €<%= products[i].price %></h5>
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="number" min="1" max="99" value="1">
-                                    <button class="btn" type="button">Add To Cart</button>
-                                </div>
-                            </div>
+                                <!-- End of second outer column -->
+                                <% } %>
                         </div>
-                        <!-- End of first inner grid -->
+                        <% }; %>
+                        <!-- End of row -->
+                </div>
+                <!-- End of container for products -->
 
+                <!-- Modified bootstrap 'Offcanvas' element-->
+                <div class="offcanvas offcanvas-start offcanvas-cart" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                    aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-
-                    <!-- To properly display 2 products per row, add second one only if another product is available on current iteration -->
-                    <% if (i + 1 < products.length) { %>
-                    <div class="col-lg-6 col-outer">
-
-                        <!-- Second inner grid for a particular product -->
-                        <div class="container container-prod">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <img src="images/<%= products[i+1].image %>" alt="product image">
-                                </div>
-                                <div class="col-lg-6 product-desc">
-                                    <h6><%= products[i+1].brand %></h6>
-                                    <h5><%= products[i+1].name %></h5>
-                                    <p>
-                                        <%= products[i+1].description %>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row purchase-details">
-                                <div class="col-lg-6">
-                                    <h5>Price: €<%= products[i+1].price %></h5>
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="number" min="1" max="99" value="1">
-                                    <button class="btn" type="button">Add To Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of second inner grid -->
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Shopping Cart</h5><hr>
+                    <div class="offcanvas-body">
+                        <p>Try scrolling the rest of the page to see this option in action.</p>
                     </div>
-                    <% } %>
-                </div>    
-            <% }; %>
-        </div>
+                </div>
+                <!-- End of 'Offcanvas' -->
 
-        <!-- Footer -->
-        <%- include("includes/footer.ejs") %>
+                <!-- Footer -->
+                <%- include("includes/footer.ejs") %>
     </body>
-</html>
+
+    </html>

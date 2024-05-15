@@ -27,12 +27,10 @@
                     <a class="nav-link <%= isLoggedIn === "Log Out" ? "log-out" : "" %>" id="isLoggedIn" href="#"
                         onclick=<%= isLoggedIn==="Log In" ? "togglePopup()" : "" %> ><%= isLoggedIn %>
                     </a>
-                </li>
-                <!-- Logic to display welcome <customerName> text after log in -->
-                <li class="nav-item">
-                    <p class="user"><%= customerName ? "Welcome " + customerName : "" %></p>
-                </li>
+                </li>              
             </ul>
+            <!-- Logic to display welcome <customerName> text after log in -->
+            <div class="user"><%= customerName ? "Welcome " + customerName : "" %></div>
         </div>
     </div>
 </nav>

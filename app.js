@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-// Set up the view engine
+// Set up EJS as template engine
 app.set("view engine", "ejs");
 
 // Import mysql2 module, pass in a config object and create a connection to the database
@@ -41,7 +41,7 @@ connection.connect((err) => {
     }
 });
 
-// Serve static files from a public directory
+// Middleware for serving static files
 app.use(express.static("home"));
 
 // Import authentication module
@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
     const { loginStatus } = res.locals;
 
     // Render home page with activePage status to highlight navbar link and login status to display 'Log In'/'Log out' accordingly
-    // Also display customer name if logged in
+    // Include customer name from the current session
     res.render("index", {activePage: "home", isLoggedIn: loginStatus, customerName: req.session.userName});
 });
 

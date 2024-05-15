@@ -103,15 +103,27 @@
                 </div>
                 <!-- End of container for products -->
 
-                <!-- Modified bootstrap 'Offcanvas' element-->
+                <!-- Bootstrap 'Offcanvas' element-->
                 <div class="offcanvas offcanvas-start offcanvas-cart" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                     aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Shopping Cart</h5><hr>
+                    <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Shopping Cart</h4>
                     <div class="offcanvas-body">
-                        <p>Try scrolling the rest of the page to see this option in action.</p>
+                        <div class="container cart-products-wrapper">
+                            <form action="/checkout" method="POST">
+                                <div class="row cart-product">
+                                    <div class="col-lg-3">Jubilarna Original 250g</div>
+                                    <div class="col-lg-2">Qty: 3</div>
+                                    <div class="col-lg-2">Price: €2.99</div>
+                                    <div class="col-lg-2">Total: €8.97</div>
+                                    <div class="col-lg-3"><button type="button" class="prod-remove">Remove</button></div>
+                                </div>
+                                <h5 class="total">TOTAL: €8.97</h5>
+                                <button class="btn-checkout" type="submit">CHECKOUT</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <!-- End of 'Offcanvas' -->

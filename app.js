@@ -114,7 +114,7 @@ app.post("/login", (req, res) => {
                 req.session.userName = authenticated.name;
                 return res.status(200).send("Authenticated");
             }
-            // If not authenticated, set response status to 401 and respond with a JSON containing error message
+            // If not authenticated, set response status to 401 and send error message as JSON response
             res.status(401);
             res.json({ error: "Invalid username/password" });
         }

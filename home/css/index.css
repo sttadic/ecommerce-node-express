@@ -75,18 +75,21 @@
     padding-top: 2rem;
 }
 
-/* Define size, margins and borders of input element within newsletter */
+/* Define size, margins and borders of newsletter input element */
 .news-email {
     width: 40%;
     margin: 2rem;
     outline: 0.5rem groove rgba(202, 148, 148, 0.5);
     border-radius: 0.5rem;
-    padding-left: 0.5rem;
+    padding-left: 0.7rem;
+    font-size: 1.3rem;
 }
 
 /* Style for a heading indicating outcome of email newsletter submission */
 .news-message {
     text-shadow: 0.3rem 0.3rem 0.5rem white;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
 }
 
 /* Change width relative to the parent element when screen size less than 650px */

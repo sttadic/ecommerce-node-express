@@ -67,7 +67,7 @@
     outline: 1rem groove rgba(202, 148, 148, 0.5);
 }
 
-/* Set width and center heading within newsletter form element */
+/* Heading of newsletter form element */
 .newsletter h4 {
     font-style: italic;
     width: 60%;
@@ -83,6 +83,11 @@
     border-radius: 0.5rem;
     padding-left: 0.7rem;
     font-size: 1.3rem;
+}
+
+/* Newsletter submission button */
+.newsletter button {
+    font-size: 1.2rem;
 }
 
 /* Style for a heading indicating outcome of email newsletter submission */

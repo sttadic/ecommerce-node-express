@@ -22,6 +22,8 @@ function emailValidator(event) {
     if (validPattern.test(email)) {
         message.textContent = "Thank you for Subscribing!";
     } else {
-        message.textContent = "Please enter valid e-mail address";
+        let invalidEmail = document.getElementById("news-email");
+        message.textContent = `"${invalidEmail.value}" is not valid e-mail address!`;
+        invalidEmail.value = "";
     }
 }

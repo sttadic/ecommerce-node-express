@@ -36,10 +36,10 @@ xhttp.send(JSON.stringify({
 
 // Logout confirmation (navbar.ejs)
 let logout = document.querySelector(".log-out");
-// Check if '.log-out' class exists (added dynamically to link tag depending on login status)
+// Check if '.log-out' class exists (added dynamically to navbar link tag depending on login status)
 if (logout) {
     // Listen for click event
-    logout.addEventListener("click", function(event) {
+    logout.addEventListener("click", () => {
         // Show confirmation window and if confirmed, redirect to logout endpoint
         let confirmed = window.confirm("Are you sure you want to log out?");
         if (confirmed) {

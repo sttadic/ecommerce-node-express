@@ -1,4 +1,4 @@
-// Authentication function that takes parameters username, password and customers object
+// Authentication function
 function authenticate(username, password, customers) {
     const customer = customers.find(customer => customer.username === username);
 

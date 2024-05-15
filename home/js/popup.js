@@ -2,11 +2,11 @@ let username = document.getElementById("username");
 let password = document.getElementById("password");
 let loginError = document.getElementById("login-error");
 
-// Function that triggers login popup
+// Function that toggles login popup
 function togglePopup() {
     let blurAll = document.querySelectorAll(".blur");
     let popup = document.getElementById("popup");
-    // Togle classes for all .blur and .popup elements to add/remove blur and make popup appear/disapear
+    // Toggle classes for all .blur and .popup elements to add/remove blur and make popup appear/disapear
     blurAll.forEach(element => {
         element.classList.toggle("blur-active");
     });

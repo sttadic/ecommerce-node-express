@@ -3,14 +3,12 @@
 document.getElementById("login-submit").addEventListener("click", (event) => {
     // Prevent default form submission
     event.preventDefault();
-// Instantiate XMLHttpRequest object
-let xhttp = new XMLHttpRequest();
-xhttp.open("POST", "/login", true);
-// Set request header content type to JSON
-xhttp.setRequestHeader("Content-Type", "application/json");
-xhttp.onreadystatechange = () => {
-    // Status of request is 4 (response is ready)
-    if (xhttp.readyState === 4) {
+    // Instantiate XMLHttpRequest object
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/login", true);
+    // Set request header content type to JSON
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.onload = () => {
         // Server responds with status 401 (unauthorized)
         if (xhttp.status === 401) {
             // Parse JSON
@@ -20,7 +18,7 @@ xhttp.onreadystatechange = () => {
                 document.getElementById("login-error").textContent = data.error;
             }
         // Server responds with 200 (all ok) - open the page from which login was called
-         } else if (xhttp.status === 200) {
+        } else if (xhttp.status === 200) {
             let activePage = document.querySelector(".active").getAttribute("href");
             window.location.href = activePage;
         } else {
@@ -28,7 +26,6 @@ xhttp.onreadystatechange = () => {
             alert("Ups, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
         }
     }
-}
 // Send JSON containing login data to the server
 xhttp.send(JSON.stringify({ 
     username: document.getElementById("username").value, password: document.getElementById("password").value }));

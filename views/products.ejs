@@ -7,137 +7,131 @@
     <body>
         <!-- Navbar -->
         <%- include("includes/navbar.ejs") %>
-            <!-- Login Popup -->
-            <%- include("includes/popup.ejs") %>
+        <!-- Login Popup -->
+        <%- include("includes/popup.ejs") %>
 
-                <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
-                <div class="container-fluid container-products blur">
-                    <!-- Iterate over all products sent from the server -->
-                    <% for (let i=0; i < products.length; i +=2) { %>
-                        <div class="row">
-                            <!-- First outer column -->
-                            <div class="col-lg-6 col-outer">
-                                <!-- First inner grid for a particular product -->
-                                <div class="container container-prod">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <img class="product-img" src="images/<%= products[i].image %>"
-                                                alt="product image">
-                                        </div>
-                                        <div class="col-lg-6 product-desc">
-                                            <h6>
-                                                <%= products[i].brand %>
-                                            </h6>
-                                            <h5>
-                                                <%= products[i].name %>
-                                            </h5>
-                                            <p>
-                                                <%= products[i].description %>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row purchase-details">
-                                        <div class="col-lg-6">
-                                            <h5>Price: €<%= products[i].price %>
-                                            </h5>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <!-- Form -->
-                                            <form action="/addToCart" method="POST">
-                                                <!-- Hidden input element with value of productID -->
-                                                <input class="productID" name="productID" type="number" hidden value=<%= products[i].productID %>>
-                                                <input class="quantity" name="quantity" type="number" min="1" max="99" value="1">
-                                                <button class="btn" type="submit" onclick="addToCart()">Add To Cart</button>
-                                                <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
-                                                    data-bs-target="#offcanvasWithBothOptions"
-                                                    aria-controls="offcanvasWithBothOptions">
-                                            </form>
-                                        </div>
-                                    </div>
+        <!-- Products page using bootstrap grid system. Outer grid includes two columns (products) in each row -->
+        <div class="container-fluid container-products blur">
+            <!-- Iterate over all products sent from the server -->
+            <% for (let i=0; i < products.length; i +=2) { %>
+                <div class="row">
+                    <!-- First outer column -->
+                    <div class="col-lg-6 col-outer">
+                        <!-- First inner grid for a particular product -->
+                        <div class="container container-prod">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img class="product-img" src="images/<%= products[i].image %>"
+                                        alt="product image">
                                 </div>
-                                <!-- End of first inner grid -->
+                                <div class="col-lg-6 product-desc">
+                                    <h6>
+                                        <%= products[i].brand %>
+                                    </h6>
+                                    <h5>
+                                        <%= products[i].name %>
+                                    </h5>
+                                    <p>
+                                        <%= products[i].description %>
+                                    </p>
+                                </div>
                             </div>
-                            <!-- End of first outer column -->
+                            <div class="row purchase-details">
+                                <div class="col-lg-6">
+                                    <h5>Price: €<%= products[i].price %>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <!-- Hidden input element with value of productID -->
+                                    <input class="productID" name="productID" type="number" hidden value=<%= products[i].productID %>>
+                                    <input class="quantity" name="quantity" type="number" min="1" max="99" value="1">
+                                    <button class="btn" type="submit">Add To Cart</button>
+                                    <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasWithBothOptions"
+                                        aria-controls="offcanvasWithBothOptions">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of first inner grid -->
+                    </div>
+                    <!-- End of first outer column -->
 
-                            <!-- To properly display 2 products per row, add second one only if another product is available on current iteration -->
-                            <% if (i + 1 < products.length) { %>
-                                <!-- Second outer column -->
-                                <div class="col-lg-6 col-outer">
-                                    <!-- Second inner grid for a particular product -->
-                                    <div class="container container-prod">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <img class="product-img" src="images/<%= products[i+1].image %>"
-                                                    alt="product image">
-                                            </div>
-                                            <div class="col-lg-6 product-desc">
-                                                <h6>
-                                                    <%= products[i+1].brand %>
-                                                </h6>
-                                                <h5>
-                                                    <%= products[i+1].name %>
-                                                </h5>
-                                                <p>
-                                                    <%= products[i+1].description %>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="row purchase-details">
-                                            <div class="col-lg-6">
-                                                <h5>Price: €<%= products[i+1].price %>
-                                                </h5>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <!-- Form -->
-                                                <form action="/addToCart" method="POST">
-                                                    <!-- Hidden input element with value of productID -->
-                                                    <input class="productID" name="productID" type="number" hidden value=<%= products[i+1].productID %>>
-                                                    <input class="quantity" name="quantity" type="number" min="1" max="99" value="1">
-                                                    <button class="btn" type="submit" onclick="addToCart()">Add To Cart</button>
-                                                    <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
-                                                        data-bs-target="#offcanvasWithBothOptions"
-                                                        aria-controls="offcanvasWithBothOptions">
-                                                </form>
-                                            </div>
-                                        </div>    
+                    <!-- To properly display 2 products per row, add second one only if another product is available on current iteration -->
+                    <% if (i + 1 < products.length) { %>
+                        <!-- Second outer column -->
+                        <div class="col-lg-6 col-outer">
+                            <!-- Second inner grid for a particular product -->
+                            <div class="container container-prod">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <img class="product-img" src="images/<%= products[i+1].image %>"
+                                            alt="product image">
                                     </div>
-                                    <!-- End of second inner grid -->
+                                    <div class="col-lg-6 product-desc">
+                                        <h6>
+                                            <%= products[i+1].brand %>
+                                        </h6>
+                                        <h5>
+                                            <%= products[i+1].name %>
+                                        </h5>
+                                        <p>
+                                            <%= products[i+1].description %>
+                                        </p>
+                                    </div>
                                 </div>
-                                <!-- End of second outer column -->
-                                <% } %>
+                                <div class="row purchase-details">
+                                    <div class="col-lg-6">
+                                        <h5>Price: €<%= products[i+1].price %>
+                                        </h5>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Hidden input element with value of productID -->
+                                        <input class="productID" name="productID" type="number" hidden value=<%= products[i+1].productID %>>
+                                        <input class="quantity" name="quantity" type="number" min="1" max="99" value="1">
+                                        <button class="btn" type="submit">Add To Cart</button>
+                                        <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasWithBothOptions"
+                                            aria-controls="offcanvasWithBothOptions">
+                                    </div>
+                                </div>    
+                            </div>
+                            <!-- End of second inner grid -->
                         </div>
-                    <% }; %>
-                    <!-- End of row end for loop -->
+                        <!-- End of second outer column -->
+                        <% } %>
                 </div>
-                <!-- End of container for products -->
+            <% }; %>
+            <!-- End of row end for loop -->
+        </div>
+        <!-- End of container for products -->
 
-                <!-- Bootstrap 'Offcanvas' element-->
-                <div class="offcanvas offcanvas-start offcanvas-cart" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-                    aria-labelledby="offcanvasWithBothOptionsLabel">
-                    <div class="offcanvas-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Shopping Cart</h4>
-                    <div class="offcanvas-body">
-                        <div class="container cart-products-wrapper">
-                            <form action="/checkout" method="POST">
-                                <div class="row cart-product">
-                                    <div class="col-lg-3 cart-name">Jubilarna Original 250g</div>
-                                    <div class="col-lg-2"><input class="cart-quantity" name="quantity" type="number" min="1" max="99"></div>
-                                    <div class="col-lg-2 cart-price">Price: €2.99</div>
-                                    <div class="col-lg-2 cart-total">Total: €8.97</div>
-                                    <div class="col-lg-3"><button class="prod-remove" type="button">Remove</button></div>
-                                </div>
-                                <h5 id="cart-total-all" class="total">TOTAL: €8.97</h5>
-                                <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
-                            </form>
+        <!-- Bootstrap 'Offcanvas' element-->
+        <div class="offcanvas offcanvas-start offcanvas-cart" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Shopping Cart</h4>
+            <div class="offcanvas-body">
+                <div class="container cart-products-wrapper">
+                    <form action="/checkout" method="POST">
+                        <div class="row cart-product">
+                            <div class="col-lg-3 cart-name">Jubilarna Original 250g</div>
+                            <div class="col-lg-2"><input class="cart-quantity" name="quantity" type="number" min="1" max="99"></div>
+                            <div class="col-lg-2 cart-price">Price: €2.99</div>
+                            <div class="col-lg-2 cart-total">Total: €8.97</div>
+                            <div class="col-lg-3"><button class="prod-remove" type="button">Remove</button></div>
                         </div>
-                    </div>
+                        <h5 id="cart-total-all" class="total">TOTAL: €8.97</h5>
+                        <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
+                    </form>
                 </div>
-                <!-- End of 'Offcanvas' -->
+            </div>
+        </div>
+        <!-- End of 'Offcanvas' -->
 
-                <!-- Footer -->
-                <%- include("includes/footer.ejs") %>
+        <!-- Footer -->
+        <%- include("includes/footer.ejs") %>
+        <script src="/js/cart.js"></script>
     </body>
-
-    </html>
+</html>

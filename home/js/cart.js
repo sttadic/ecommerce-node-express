@@ -5,6 +5,12 @@ function addProduct(addBtn) {
     let pID = addBtn.parentNode.querySelector(".productID").value;
     let pQty = addBtn.parentNode.querySelector(".quantity").value;
 
+    // Invalid quantity
+    if (pQty < 1 || pQty > 99) {
+        alert("Please select quantity between 1-99");
+        return;
+    }
+
     // Instantiate XMLHttpRequest object, set endpoint and RequestHeder content type
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "addToCart", true);
@@ -96,13 +102,14 @@ function addProduct(addBtn) {
 // Remove product from cart (triggered by click on cart 'remove' button)
 function removeFromCart(pID, remBtn) {
 
-    // Remove parent of a parent element (row) from which 'remove button' was clicked
+    // Remove parent of a parent element (row) from which 'remove button' was clicked on
     remBtn.parentElement.parentElement.remove(); 
 
+    // Set endpoint and requestHeader
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/removeFromCart", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
 
-    // Send productID to the server so it can be deleted from a session (cart)
+    // Send productID to the server so it can be deleted from a session
     xhttp.send(JSON.stringify({productID: pID}));
 }

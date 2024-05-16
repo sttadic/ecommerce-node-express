@@ -98,11 +98,11 @@ app.get("/products", (req, res) => {
 
 // Route that handles adding products to the cart (session)
 app.post("/addToCart", (req, res) => {
-    // Extract data from the form submission
+    // Extract data from the request body
     const prodID = req.body.productID;
     const prodQty = req.body.quantity;
 
-    // Initialize cart in the session if it doesn't exist
+    // Initialize cart in the session if it doesn't exist yet
     if (!req.session.cart) {
         req.session.cart = [];
     }
@@ -125,7 +125,23 @@ app.post("/addToCart", (req, res) => {
             return res.status(200).json(req.session.cart);
         }
     });
-    
+});
+
+
+// Route to handle product removal from the session (cart)
+app.post("/removeFromCart", (req, res) => {
+    // Get the productID from the request body
+    const prodID  = req.body.productID;
+
+    // Iterate over req.session.cart array and remove object with particular property value of productID
+    for (let i = 0; i < req.session.cart.length; i++) {
+        if (prodID == req.session.cart[i].productID) {
+            req.session.cart.splice(i, 1);
+            break;
+        }
+    }
+    // Send status code
+    return res.sendStatus(200);
 });
 
 

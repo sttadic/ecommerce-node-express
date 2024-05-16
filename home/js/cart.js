@@ -1,9 +1,9 @@
-// Logic to populate cart (offcanvas) with corresponding data using ajax
-function addProduct(button) {
+// Logic to populate cart (offcanvas) with corresponding product data using ajax
+function addProduct(addBtn) {
 
     // Extract the value of parent's element with the class 'productID' and 'quantity'
-    let pID = button.parentNode.querySelector(".productID").value;
-    let pQty = button.parentNode.querySelector(".quantity").value;
+    let pID = addBtn.parentNode.querySelector(".productID").value;
+    let pQty = addBtn.parentNode.querySelector(".quantity").value;
 
     // Instantiate XMLHttpRequest object, set endpoint and RequestHeder content type
     let xhttp = new XMLHttpRequest();
@@ -30,6 +30,8 @@ function addProduct(button) {
 
             // Iterate over productsData array of objects, create elements with respective attributes and values and append them to the parent elements
             for (let i = 0; i < productsData.length; i++) {
+
+                // Create row
                 let row = document.createElement("div");
                 row.className = "row cart-product"
                 
@@ -62,13 +64,14 @@ function addProduct(button) {
                 // Add to the sum on each iteration
                 sum += productsData[i].productQty * productsData[i].productPrice;
 
-                // Column with 'remove' button
+                // Column with 'remove' button - onclick event calls function with 'productID' as parameter
                 let colRemove = document.createElement("div");
                 colRemove.className = "col-lg-3";
                 let btnRemove = document.createElement("button");
                 btnRemove.className = "prod-remove";
                 btnRemove.textContent = "Remove";
                 btnRemove.setAttribute("type", "button");
+                btnRemove.setAttribute("onclick", `removeFromCart(${productsData[i].productID}, this)`);
                 colRemove.appendChild(btnRemove);
                 
                 // Append all to the row element (div)
@@ -80,10 +83,8 @@ function addProduct(button) {
                 // Append row to the parent element
                 productsWrapper.appendChild(row);
             }
-
             // Display total of entire cart
             document.getElementById("cart-total").textContent = sum.toFixed(2);
-
         } else {
             // Alert with status code and response body
             alert("Oops, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
@@ -91,3 +92,17 @@ function addProduct(button) {
     }
 }
 
+
+// Remove product from cart (triggered by click on cart 'remove' button)
+function removeFromCart(pID, remBtn) {
+
+    // Remove parent of a parent element (row) from which 'remove button' was clicked
+    remBtn.parentElement.parentElement.remove(); 
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/removeFromCart", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+
+    // Send productID to the server so it can be deleted from a session (cart)
+    xhttp.send(JSON.stringify({productID: pID}));
+}

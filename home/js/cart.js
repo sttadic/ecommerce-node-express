@@ -1,9 +1,9 @@
 // Logic to populate cart (offcanvas) with corresponding product data using ajax
 function addProduct(addBtn) {
 
-    // Extract the value of parent's element with the class 'productID' and 'quantity'
-    let pID = addBtn.parentNode.querySelector(".productID").value;
-    let pQty = addBtn.parentNode.querySelector(".quantity").value;
+    // Extract the value of parent's element
+    let pID = addBtn.parentElement.querySelector(".productID").value;
+    let pQty = addBtn.parentElement.querySelector(".quantity").value;
 
     // Invalid quantity
     if (pQty < 1 || pQty > 99) {
@@ -49,28 +49,26 @@ function addProduct(addBtn) {
                 // Quantity column with input element
                 let colQty = document.createElement("div");
                 colQty.className = "col-lg-2";
+                colQty.textContent = "Qty: ";
                 let inpQty = document.createElement("input");
                 inpQty.className = "cart-quantity";
-                inpQty.setAttribute("type", "number");
-                inpQty.setAttribute("min", "1");
-                inpQty.setAttribute("max", "99");
                 inpQty.setAttribute("value", productsData[i].productQty);
                 colQty.appendChild(inpQty);
 
                 // Product price column
                 let colPrice = document.createElement("div");
                 colPrice.className = "col-lg-2";
-                colPrice.textContent = productsData[i].productPrice;
+                colPrice.textContent = "Price: €" + productsData[i].productPrice;
 
                 // Product total price column
                 let colTotal = document.createElement("div");
                 colTotal.className = "col-lg-2 product-total";
-                colTotal.textContent = (productsData[i].productQty * productsData[i].productPrice).toFixed(2);
+                colTotal.textContent ="Total: €" + (productsData[i].productQty * productsData[i].productPrice).toFixed(2);
 
                 // Add to the sum on each iteration
                 sum += productsData[i].productQty * productsData[i].productPrice;
 
-                // Column with 'remove' button - onclick event calls function with 'productID' as parameter
+                // Column with 'remove' button - onclick event calls a function that removes a product (row)
                 let colRemove = document.createElement("div");
                 colRemove.className = "col-lg-3";
                 let btnRemove = document.createElement("button");
@@ -101,6 +99,10 @@ function addProduct(addBtn) {
 
 // Remove product from cart (triggered by click on cart 'remove' button)
 function removeFromCart(pID, remBtn) {
+
+    // Substract value of removed item from subtotal
+    let prodTotal = remBtn.parentElement.parentElement.querySelector(".product-total").textContent;
+    document.getElementById("cart-total").textContent -= prodTotal;
 
     // Remove parent of a parent element (row) from which 'remove button' was clicked on
     remBtn.parentElement.parentElement.remove(); 

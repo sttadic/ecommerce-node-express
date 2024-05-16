@@ -191,15 +191,12 @@
 
 /* Cart input element for quantity */
 .cart-quantity {
-    width: 3rem;
+    width: 2rem;
     height: 2rem;
     text-align: center;
     border-radius: 0.3rem;
     border: 0.1rem solid rgb(197, 130, 130);
     font-weight: bold;
+    pointer-events: none;
 }
 
-.cart-quantity::-webkit-inner-spin-button, 
-.cart-quantity::-webkit-outer-spin-button {  
-   opacity: 1;
-}

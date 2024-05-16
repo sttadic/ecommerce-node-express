@@ -102,20 +102,26 @@ app.post("/addToCart", (req, res) => {
     const prodID = req.body.productID;
     const prodQty = req.body.quantity;
 
+    // Initialize cart in the session if it doesn't exist
+    if (!req.session.cart) {
+        req.session.cart = [];
+    }
+
     // Query database for name and price of a particular product
     connection.query("SELECT name, price FROM products WHERE productID = ?", [prodID], (error, data) => {
         if (error) {
             console.error("Error retrieving data from database: ", error);
             res.status(500).send("Error retrieving data from database!");
         } else {
-            // Store data in a session
-            req.session.cart = {
+            // Add all data to a cart session
+            req.session.cart.push( {
                 productID: prodID,
                 productName: data[0].name,
                 productQty: prodQty,
                 productPrice: data[0].price
-            };
-            // Send JSON as response containing session cart data
+            });
+
+            // Send JSON as response containing cart session data
             return res.status(200).json(req.session.cart);
         }
     });

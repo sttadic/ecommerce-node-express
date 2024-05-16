@@ -26,9 +26,11 @@ document.getElementById("login-submit").addEventListener("click", (event) => {
             alert("Ups, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
         }
     }
-// Send JSON containing login data to the server
-xhttp.send(JSON.stringify({ 
-    username: document.getElementById("username").value, password: document.getElementById("password").value }));
+    // Send JSON containing login data to the server
+    xhttp.send(JSON.stringify({ 
+        username: document.getElementById("username").value, 
+        password: document.getElementById("password").value 
+    }));
 });
 
 

@@ -43,9 +43,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <!-- Hidden input element with value of productID -->
-                                    <input class="productID" name="productID" type="number" hidden value=<%= products[i].productID %>>
-                                    <input class="quantity" name="quantity" type="number" min="1" max="99" value="1">
-                                    <button class="btn" type="submit">Add To Cart</button>
+                                    <input class="productID" type="number" hidden value=<%= products[i].productID %>>
+                                    <input class="quantity" type="number" min="1" max="99" value="1">
+                                    <button class="btn" type="submit" onclick="addProduct(this)">Add To Cart</button>
                                     <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasWithBothOptions"
                                         aria-controls="offcanvasWithBothOptions">
@@ -86,9 +86,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <!-- Hidden input element with value of productID -->
-                                        <input class="productID" name="productID" type="number" hidden value=<%= products[i+1].productID %>>
-                                        <input class="quantity" name="quantity" type="number" min="1" max="99" value="1">
-                                        <button class="btn" type="submit">Add To Cart</button>
+                                        <input class="productID" type="number" hidden value=<%= products[i+1].productID %>>
+                                        <input class="quantity" type="number" min="1" max="99" value="1">
+                                        <button class="btn" type="submit" onclick="addProduct(this)">Add To Cart</button>
                                         <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasWithBothOptions"
                                             aria-controls="offcanvasWithBothOptions">
@@ -113,16 +113,13 @@
             </div>
             <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Shopping Cart</h4>
             <div class="offcanvas-body">
-                <div class="container cart-products-wrapper">
+                <div class="container cart-products">
+                    <div id="cart-product-wrapper">
+
+                    </div>
+                    
+                    <h5 id="cart-total-all" class="total">TOTAL: €8.97</h5>
                     <form action="/checkout" method="POST">
-                        <div class="row cart-product">
-                            <div class="col-lg-3 cart-name">Jubilarna Original 250g</div>
-                            <div class="col-lg-2"><input class="cart-quantity" name="quantity" type="number" min="1" max="99"></div>
-                            <div class="col-lg-2 cart-price">Price: €2.99</div>
-                            <div class="col-lg-2 cart-total">Total: €8.97</div>
-                            <div class="col-lg-3"><button class="prod-remove" type="button">Remove</button></div>
-                        </div>
-                        <h5 id="cart-total-all" class="total">TOTAL: €8.97</h5>
                         <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
                     </form>
                 </div>

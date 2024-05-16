@@ -25,6 +25,9 @@ function addProduct(button) {
             let productsWrapper = document.getElementById("cart-product-wrapper");
             productsWrapper.innerHTML = "";
 
+            // Initialize sum variable used to display total price of all added products
+            let sum = 0;
+
             // Iterate over productsData array of objects, create elements with respective attributes and values and append them to the parent elements
             for (let i = 0; i < productsData.length; i++) {
                 let row = document.createElement("div");
@@ -53,10 +56,13 @@ function addProduct(button) {
 
                 // Product total price column
                 let colTotal = document.createElement("div");
-                colTotal.className = "col-lg-2";
-                colTotal.textContent = productsData[i].productQty * productsData[i].productPrice;
+                colTotal.className = "col-lg-2 product-total";
+                colTotal.textContent = (productsData[i].productQty * productsData[i].productPrice).toFixed(2);
 
-                // Remove column with button
+                // Add to the sum on each iteration
+                sum += productsData[i].productQty * productsData[i].productPrice;
+
+                // Column with 'remove' button
                 let colRemove = document.createElement("div");
                 colRemove.className = "col-lg-3";
                 let btnRemove = document.createElement("button");
@@ -74,9 +80,14 @@ function addProduct(button) {
                 // Append row to the parent element
                 productsWrapper.appendChild(row);
             }
+
+            // Display total of entire cart
+            document.getElementById("cart-total").textContent = sum.toFixed(2);
+
         } else {
             // Alert with status code and response body
-            alert("Ups, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
+            alert("Oops, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
         }
     }
 }
+

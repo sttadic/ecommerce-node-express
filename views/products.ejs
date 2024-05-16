@@ -116,9 +116,10 @@
                 <div class="container cart-products">
                     <div id="cart-product-wrapper">
 
-                    </div>
+                        <!-- This block is populated by asynchronous javascript code (cart.js) -->
                     
-                    <h5 id="cart-total-all" class="total">TOTAL: €8.97</h5>
+                    </div>
+                    <h5 class="total">€<span id="cart-total"></span></h5>
                     <form action="/checkout" method="POST">
                         <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
                     </form>

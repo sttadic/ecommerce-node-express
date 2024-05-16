@@ -23,7 +23,7 @@ document.getElementById("login-submit").addEventListener("click", (event) => {
             window.location.href = activePage;
         } else {
             // Alert with status code and response body
-            alert("Ups, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
+            alert("Oops, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
         }
     }
     // Send JSON containing login data to the server

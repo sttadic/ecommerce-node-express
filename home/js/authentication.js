@@ -22,7 +22,7 @@ document.getElementById("login-submit").addEventListener("click", (event) => {
             let activePage = document.querySelector(".active").getAttribute("href");
             window.location.href = activePage;
         } else {
-            // Alert with status code and plain text response body
+            // Alert with status code and response body
             alert("Ups, something went wrong! Status code: " + xhttp.status + " - " + xhttp.responseText);
         }
     }

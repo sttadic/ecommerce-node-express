@@ -1,4 +1,4 @@
-const arrProductIDs = [];
+let arrProductIDs = [];
 
 // Logic to populate cart (offcanvas) with corresponding product data using ajax
 function addProduct(addBtn) {
@@ -80,14 +80,14 @@ function addProduct(addBtn) {
                 // Add to the sum on each iteration
                 sum += productsData[i].productQty * productsData[i].productPrice;
 
-                // Column with 'remove' button - onclick event calls a function that removes a product (row)
+                // Column with 'remove' button - onclick event calls a function that removes a product (row) and product id from array
                 let colRemove = document.createElement("div");
                 colRemove.className = "col-lg-3";
                 let btnRemove = document.createElement("button");
                 btnRemove.className = "prod-remove";
                 btnRemove.textContent = "Remove";
                 btnRemove.setAttribute("type", "button");
-                btnRemove.setAttribute("onclick", `removeFromCart(${productsData[i].productID}, this)`);
+                btnRemove.setAttribute("onclick", `removeFromCart(${productsData[i].productID}, this); removeID(${productsData[i].productID})`);
                 colRemove.appendChild(btnRemove);
                 
                 // Append all to the row element (div)
@@ -133,6 +133,17 @@ function removeFromCart(pID, remBtn) {
 
     // Send productID to the server so it can be deleted from a session
     xhttp.send(JSON.stringify({productID: pID}));
+}
+
+
+// Remove product id from an array of productIDs so that product can be added again
+function removeID(pID) {
+    for (let i = 0; i < arrProductIDs.length; i++) {
+        if (pID == arrProductIDs[i]) {
+            arrProductIDs.splice(i, 1);
+            break;
+        }
+    }
 }
 
 

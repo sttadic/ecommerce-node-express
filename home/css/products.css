@@ -108,8 +108,11 @@
 }
 
 .cart:hover {
-    outline: 0.1rem groove rgb(255, 255, 255);
     box-shadow: 0.3rem 0.3rem 0.5rem rgb(255, 255, 255);;
+}
+
+.cart-highlight {
+    outline: 0.1rem groove rgb(255, 255, 255);
 }
 
 

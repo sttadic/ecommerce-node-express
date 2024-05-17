@@ -16,6 +16,10 @@ function addProduct(addBtn) {
     // Add product Id into an array to be validated on next call by the code above
     arrProductIDs.push(pID);
 
+    // Highlight cart icon of a product added to the cart
+    let img = addBtn.parentElement.querySelector(".cart");
+    img.className = "cart cart-highlight";
+
     // Instantiate XMLHttpRequest object, set endpoint and RequestHeder content type
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "addToCart", true);
@@ -69,7 +73,6 @@ function addProduct(addBtn) {
                 let colTotal = document.createElement("div");
                 colTotal.className = "col-lg-2 product-total";
                 colTotal.textContent ="Total: €" + (productsData[i].productQty * productsData[i].productPrice).toFixed(2);
-
                 // Add to the sum on each iteration
                 sum += productsData[i].productQty * productsData[i].productPrice;
 
@@ -112,6 +115,11 @@ function removeFromCart(pID, remBtn) {
     // Remove parent of a parent element (row) from which 'remove button' was clicked on
     remBtn.parentElement.parentElement.remove(); 
 
+    // Remove cart icon highlighting for product being removed
+    let removedProd = document.querySelector(`input[value="${pID}"]`);
+    let img = removedProd.parentElement.querySelector(".cart");
+    img.className = "cart";
+    
     // Set endpoint and requestHeader
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/removeFromCart", true);
@@ -123,7 +131,7 @@ function removeFromCart(pID, remBtn) {
 
 
 // Function that checks quantity range and product status in a cart
-function validateInput(prodID, prodQuantity, arrProdIDs) {
+function validateInput(prodQuantity, prodID, arrProdIDs) {
     if (prodQuantity < 1 || prodQuantity > 99) {
         alert("Please select quantity between 1-99");
         return false;

@@ -166,7 +166,7 @@ app.post("/removeFromCart", (req, res) => {
 app.post("/checkout", (req, res) => {
     // If no session (cart empty)
     if (!req.session.cart) {
-        return res.status(400).send("Cart is Empty");
+        return res.status(400).redirect("/products");
     }
 
     // Calculate cart subtotal
@@ -176,7 +176,7 @@ app.post("/checkout", (req, res) => {
         sum += cart[i].productQty * cart[i].productPrice;
     }
 
-    // Render chouckout template
+    // Render chouckout template with subtotal
     return res.status(200).render("checkout", {subtotal: sum});
 
 });

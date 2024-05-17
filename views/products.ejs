@@ -150,7 +150,13 @@
                         <% } %>
                         </span></h5>
                     <form action="/checkout" method="POST">
-                        <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
+
+                        <% if (productsList) { %>
+                            <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
+                        <% } else { %>
+                            <button id="cart-checkout" class="btn-checkout" type="submit" disabled="false">CHECKOUT</button>
+                           <% } %>
+
                     </form>
                 </div>
             </div>

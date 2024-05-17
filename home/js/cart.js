@@ -20,6 +20,11 @@ function addProduct(addBtn) {
     let img = addBtn.parentElement.querySelector(".cart");
     img.className = "cart cart-highlight";
 
+    // Enable 'checkout' button if there are products in the cart
+    if (arrProductIDs.length >= 1) {
+        document.getElementById("cart-checkout").disabled = false;
+    }
+
     // Instantiate XMLHttpRequest object, set endpoint and RequestHeder content type
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "addToCart", true);
@@ -144,13 +149,17 @@ function removeID(pID) {
             break;
         }
     }
+    // Disable checkout button if cart is empty
+    if (arrProductIDs.length < 1) {
+        document.getElementById("cart-checkout").disabled = true;
+    }
 }
 
 
 // Function that checks quantity range and product status in a cart
 function validateInput(prodQuantity, prodID, arrProdIDs) {
     if (prodQuantity < 1 || prodQuantity > 99) {
-        alert("Please select quantity between 1-99");
+        alert("Please select quantity between 1 and 99");
         return false;
     }
 

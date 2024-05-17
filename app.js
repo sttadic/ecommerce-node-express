@@ -145,6 +145,19 @@ app.post("/removeFromCart", (req, res) => {
 });
 
 
+// Checkout route
+app.post("/checkout", (req, res) => {
+    let sum = 0;
+    const cart = req.session.cart;
+    for (let i = 0; i < cart.length; i++) {
+        sum += cart[i].productQty * cart[i].productPrice;
+    }
+
+    res.render("checkout", {subtotal: sum});
+
+});
+
+
 // Login route
 app.post("/login", (req, res) => {
     // Store request object in loginData constant

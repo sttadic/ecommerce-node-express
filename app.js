@@ -90,7 +90,13 @@ app.get("/products", (req, res) => {
             console.log("Error querying database: " + error);
             return res.status(500).send("Error retrieving data from database!");
         } else {
-            return res.status(200).render("products", {activePage: "products", products: data, isLoggedIn: loginStatus, customerName: req.session.userName});
+            return res.status(200).render("products", {
+                activePage: "products", 
+                products: data,
+                isLoggedIn: loginStatus,
+                customerName: req.session.userName,
+                productsList: req.session.cart
+            });
         }
     });
 });
@@ -133,6 +139,11 @@ app.post("/removeFromCart", (req, res) => {
     // Get the productID from the request body
     const prodID  = req.body.productID;
 
+    if (req.session.cart.length <= 1) {
+        delete req.session.cart;
+        return;
+    }
+
     // Iterate over req.session.cart array and remove object with particular property value of productID
     for (let i = 0; i < req.session.cart.length; i++) {
         if (prodID == req.session.cart[i].productID) {
@@ -147,13 +158,20 @@ app.post("/removeFromCart", (req, res) => {
 
 // Checkout route
 app.post("/checkout", (req, res) => {
+    // Cart session empty
+    if (req.session.cart < 1) {
+        return res.send("Cart is Empty");
+    }
+
+    // Calculate cart subtotal
     let sum = 0;
     const cart = req.session.cart;
     for (let i = 0; i < cart.length; i++) {
         sum += cart[i].productQty * cart[i].productPrice;
     }
 
-    res.render("checkout", {subtotal: sum});
+    // Render chouckout template
+    return res.render("checkout", {subtotal: sum});
 
 });
 

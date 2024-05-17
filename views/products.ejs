@@ -115,11 +115,40 @@
             <div class="offcanvas-body">
                 <div class="container cart-products">
                     <div id="cart-product-wrapper">
-
-                        <!-- This block is populated by asynchronous javascript code (cart.js) -->
-                    
+                        <!-- Populate cart from the cart session (if exists) on product page load. Asynchronous javascript code (cart.js) populates cart when 'Add To Cart' button is clicked on -->
+                        <% if (productsList) { %>
+                            <% for( let i = 0; i < productsList.length; i++ ) { %>
+                                <div class="row cart-product">
+                                    <div class="col-lg-3">
+                                        <%= productsList[i].productName %>
+                                    </div>
+                                    <div class="col-lg-2">Qty:
+                                        <input class="cart-quantity" value="<%= productsList[i].productQty %>">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        Price: €<%= productsList[i].productPrice %>
+                                    </div>
+                                    <div class="col-lg-2">Total: €
+                                        <span class="product-total"><%= productsList[i].productQty*productsList[i].productPrice %></span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button class="prod-remove" type="button" onclick="removeFromCart('<%= productsList[i].productID %>', this); removeID('<%= productsList[i].productID %>')">Remove</button>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %> 
                     </div>
-                    <h5 class="total">Subtotal: €<span id="cart-total"></span></h5>
+                    <!-- Calculate subtotal of a complete cart (if cart session exists) on page load -->
+                    <h5 class="total">Subtotal: €
+                        <span id="cart-total">
+                        <% if (productsList) { %>
+                            <% let sum = 0 %>
+                            <% for( let i = 0; i < productsList.length; i++ ) { %>
+                                <% sum += productsList[i].productPrice*productsList[i].productQty %>
+                            <% } %>
+                            <%= sum %>
+                        <% } %>
+                        </span></h5>
                     <form action="/checkout" method="POST">
                         <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
                     </form>

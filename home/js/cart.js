@@ -1,15 +1,20 @@
+const arrProductIDs = [];
+
 // Logic to populate cart (offcanvas) with corresponding product data using ajax
 function addProduct(addBtn) {
 
     // Extract the value of parent's element
     let pID = addBtn.parentElement.querySelector(".productID").value;
     let pQty = addBtn.parentElement.querySelector(".quantity").value;
-
-    // Invalid quantity
-    if (pQty < 1 || pQty > 99) {
-        alert("Please select quantity between 1-99");
+    
+    // Prevent out-of-range quantities and duplicated products in a cart
+    let isValid = validateInput(pQty, pID , arrProductIDs);
+    if (!isValid) {
         return;
     }
+
+    // Add product Id into an array to be validated on next call by the code above
+    arrProductIDs.push(pID);
 
     // Instantiate XMLHttpRequest object, set endpoint and RequestHeder content type
     let xhttp = new XMLHttpRequest();
@@ -114,4 +119,21 @@ function removeFromCart(pID, remBtn) {
 
     // Send productID to the server so it can be deleted from a session
     xhttp.send(JSON.stringify({productID: pID}));
+}
+
+
+// Function that checks quantity range and product status in a cart
+function validateInput(prodID, prodQuantity, arrProdIDs) {
+    if (prodQuantity < 1 || prodQuantity > 99) {
+        alert("Please select quantity between 1-99");
+        return false;
+    }
+
+    for (let i = 0; i < arrProdIDs.length; i++) {
+        if (prodID === arrProdIDs[i]) {
+            alert("Product is already added to the cart");
+            return false;
+        }
+    }
+    return true;
 }

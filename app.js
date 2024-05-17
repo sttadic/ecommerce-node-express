@@ -117,7 +117,7 @@ app.post("/addToCart", (req, res) => {
     connection.query("SELECT name, price FROM products WHERE productID = ?", [prodID], (error, data) => {
         if (error) {
             console.error("Error retrieving data from database: ", error);
-            res.status(500).send("Error retrieving data from database!");
+            return res.status(500).send("Error retrieving data from database!");
         } else {
             // Add all data to a cart session
             req.session.cart.push( {
@@ -139,28 +139,34 @@ app.post("/removeFromCart", (req, res) => {
     // Get the productID from the request body
     const prodID  = req.body.productID;
 
-    if (req.session.cart.length <= 1) {
-        delete req.session.cart;
-        return;
+    // Session does not exists for some reason
+    if (!req.session.cart) {
+        return res.status(400).send("Cart is already empty");
     }
 
+    // If this is the last item, remove cart session
+    if (req.session.cart.length <= 1) {  
+        delete req.session.cart;
+        return res.status(200).send("Last item removed from the cart");
+    }
+    
     // Iterate over req.session.cart array and remove object with particular property value of productID
     for (let i = 0; i < req.session.cart.length; i++) {
         if (prodID == req.session.cart[i].productID) {
             req.session.cart.splice(i, 1);
             break;
         }
-    }
-    // Send status code
-    return res.sendStatus(200);
+    }  
+    // All ok
+    return res.status(200).send("Product removed from the cart");
 });
 
 
 // Checkout route
 app.post("/checkout", (req, res) => {
-    // Cart session empty
-    if (req.session.cart < 1) {
-        return res.send("Cart is Empty");
+    // If no session (cart empty)
+    if (!req.session.cart) {
+        return res.status(400).send("Cart is Empty");
     }
 
     // Calculate cart subtotal
@@ -171,7 +177,7 @@ app.post("/checkout", (req, res) => {
     }
 
     // Render chouckout template
-    return res.render("checkout", {subtotal: sum});
+    return res.status(200).render("checkout", {subtotal: sum});
 
 });
 
@@ -189,11 +195,11 @@ app.post("/login", (req, res) => {
         } else {
             // Pass in request object properties and array of objects (data) from the database into auth module
             const authenticated = auth(loginData.username, loginData.password, data);
-            // If user is authenticated, store customerID and name in a session object and respond with status 200
+            // If user is authenticated, store customerId and name in a session object and respond with status 200
             if (authenticated) {
                 req.session.userID = authenticated.customerID;
                 req.session.userName = authenticated.name;
-                return res.status(200).send();
+                return res.status(200).send("Authenticated");
             }
             // If not authenticated, set response status to 401 and send response body as JSON
             return res.status(401).json({ error: "Invalid username/password" });

@@ -71,8 +71,12 @@ function addProduct(addBtn) {
 
                 // Product total price column
                 let colTotal = document.createElement("div");
-                colTotal.className = "col-lg-2 product-total";
-                colTotal.textContent ="Total: €" + (productsData[i].productQty * productsData[i].productPrice).toFixed(2);
+                colTotal.className = "col-lg-2";
+                colTotal.textContent ="Total: €";
+                let spanTotal = document.createElement("span");
+                spanTotal.className = "product-total";
+                spanTotal.textContent = (productsData[i].productQty * productsData[i].productPrice).toFixed(2);
+                colTotal.appendChild(spanTotal);
                 // Add to the sum on each iteration
                 sum += productsData[i].productQty * productsData[i].productPrice;
 
@@ -110,7 +114,9 @@ function removeFromCart(pID, remBtn) {
 
     // Substract value of removed item from subtotal
     let prodTotal = remBtn.parentElement.parentElement.querySelector(".product-total").textContent;
-    document.getElementById("cart-total").textContent -= prodTotal;
+    let totalPriceElement = document.getElementById("cart-total");
+    let subtotal = totalPriceElement.textContent - prodTotal;
+    totalPriceElement.textContent = parseFloat(subtotal).toFixed(2);
 
     // Remove parent of a parent element (row) from which 'remove button' was clicked on
     remBtn.parentElement.parentElement.remove(); 

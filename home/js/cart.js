@@ -127,7 +127,7 @@ function removeFromCart(pID, remBtn) {
     remBtn.parentElement.parentElement.remove(); 
 
     // Remove cart icon highlighting for product being removed
-    let removedProd = document.querySelector(`input[value="${pID}"]`);
+    let removedProd = document.querySelector(`.productID[value="${pID}"]`);
     let img = removedProd.parentElement.querySelector(".cart");
     img.className = "cart";
     

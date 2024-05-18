@@ -174,15 +174,17 @@ app.post("/checkout", (req, res) => {
         return res.status(400).redirect("/products");
     }
 
-    // Calculate cart subtotal
+    // Calculate subtotal and total number of items in the cart
     let sum = 0;
+    let quantity = 0;
     const cart = req.session.cart;
     for (let i = 0; i < cart.length; i++) {
         sum += cart[i].productQty * cart[i].productPrice;
+        quantity += parseInt(cart[i].productQty);
     }
 
     // Render chouckout template with subtotal
-    return res.status(200).render("checkout", {subtotal: sum});
+    return res.status(200).render("checkout", {subtotal: sum, totalQty: quantity});
 
 });
 

@@ -46,15 +46,23 @@
                                     <input class="productID" type="number" hidden value=<%= products[i].productID %>>
                                     <input class="quantity" type="number" min="1" max="99" value="1">
                                     <button class="btn" type="submit" onclick="addProduct(this)">Add To Cart</button>
-                                    <!-- Cart icon highlighted if there are products in the cart on page load -->
+                                    <!-- Cart icon, that triggers offcanvas (cart), is highlighted if there are products in the cart on page load -->
                                     <% if (productsList) { %>
+                                        <% let isFound = false %>
                                         <% for (let j = 0; j < productsList.length; j++) { %>
                                             <% if (products[i].productID == productsList[j].productID) { %>
                                                 <img class="cart cart-highlight" src="/icons/cart.png" data-bs-toggle="offcanvas"
                                                 data-bs-target="#offcanvasWithBothOptions"
                                                 aria-controls="offcanvasWithBothOptions">
+                                                <% isFound = true %>
+                                                <% break %>
                                                 <% } %>
                                             <% } %>
+                                            <% if (!isFound) { %>
+                                                <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasWithBothOptions"
+                                                aria-controls="offcanvasWithBothOptions">
+                                                <% } %>
                                     <% } else { %>
                                         <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasWithBothOptions"
@@ -100,15 +108,23 @@
                                         <input class="productID" type="number" hidden value=<%= products[i+1].productID %>>
                                         <input class="quantity" type="number" min="1" max="99" value="1">
                                         <button class="btn" type="submit" onclick="addProduct(this)">Add To Cart</button>
-                                        <!-- Cart icon highlighted if there are products in the cart on page load -->
+                                        <!-- Cart icon, that triggers offcanvas (cart), is highlighted if there are products in the cart on page load -->
                                         <% if (productsList) { %>
+                                            <% let isFound = false %>
                                             <% for (let j = 0; j < productsList.length; j++) { %>
                                                 <% if (products[i+1].productID == productsList[j].productID) { %>
                                                     <img class="cart cart-highlight" src="/icons/cart.png" data-bs-toggle="offcanvas"
                                                     data-bs-target="#offcanvasWithBothOptions"
                                                     aria-controls="offcanvasWithBothOptions">
+                                                    <% isFound = true %>
+                                                    <% break %>
                                                     <% } %>
                                                 <% } %>
+                                                <% if (!isFound) { %>
+                                                    <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
+                                                    data-bs-target="#offcanvasWithBothOptions"
+                                                    aria-controls="offcanvasWithBothOptions">
+                                                    <% } %>
                                         <% } else { %>
                                             <img class="cart" src="/icons/cart.png" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasWithBothOptions"
@@ -171,14 +187,13 @@
                             <%= sum.toFixed(2) %>
                         <% } %>
                         </span></h5>
-                    <form action="/checkout" method="POST">
-                        <!-- Checkout button disabled if no products in the cart -->
-                        <% if (productsList) { %>
-                            <button id="cart-checkout" class="btn-checkout" type="submit">CHECKOUT</button>
-                        <% } else { %>
-                            <button id="cart-checkout" class="btn-checkout" type="submit" disabled="false">CHECKOUT</button>
-                           <% } %>
-
+                    
+                    <% if (customerName) { %>
+                        <form action="/checkout" method="POST">
+                    <% } %>
+                        <!-- Checkout button disabled if no products in the cart and triggers login popup if log in required -->
+                        <button id="cart-checkout" class="btn-checkout" type="submit" onclick=<%= !customerName ? "togglePopup()": "" %>
+                            <%= !productsList ? `disabled` : "" %>>CHECKOUT</button>
                     </form>
                 </div>
             </div>

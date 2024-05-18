@@ -1,4 +1,26 @@
+// Array that holds all addedToCart product ids (used for highlighting cart icons, enabling/disabling checkout button, etc)
 let arrProductIDs = [];
+
+// Instantiate XMLHttpRequest object and configure request every time script (products page) is loaded
+let xhttp = new XMLHttpRequest();
+xhttp.open("POST", "addToCart", true);
+xhttp.setRequestHeader("Content-Type", "application/json");
+// Send empty request to server (flag to respond with the cart session)
+xhttp.send();
+xhttp.onload = () => {
+    // All ok
+    if (xhttp.status >= 200 && xhttp.status < 300) {
+        
+        // Parse JSON response and store all product ids from the session (cart) into arrProductIDs array
+        if(xhttp.responseText){
+            let productsData = JSON.parse(xhttp.responseText);
+            for (let i = 0; i < productsData.length; i++) {
+                arrProductIDs.push(productsData[i].productID);
+            }
+        }
+    }
+}
+
 
 // Logic to populate cart (offcanvas) with corresponding product data using ajax
 function addProduct(addBtn) {
@@ -136,12 +158,12 @@ function removeFromCart(pID, remBtn) {
     xhttp.open("POST", "/removeFromCart", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
 
-    // Send productID to the server so it can be deleted from a session
+    // Send productID to the server to be deleted from a session
     xhttp.send(JSON.stringify({productID: pID}));
 }
 
 
-// Remove product id from an array of productIDs so that product can be added again
+// Remove product id from an array of productIDs so that product can be added to cart again
 function removeID(pID) {
     for (let i = 0; i < arrProductIDs.length; i++) {
         if (pID == arrProductIDs[i]) {

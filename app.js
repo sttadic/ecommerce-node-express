@@ -104,6 +104,11 @@ app.get("/products", (req, res) => {
 
 // Route that handles adding products to the cart (session)
 app.post("/addToCart", (req, res) => {
+    // If no productID in request, respond with cart session (every time products page is loaded - cart.js)
+    if (!req.body.productID) {
+        return res.status(200).json(req.session.cart);
+    }
+
     // Extract data from the request body
     const prodID = req.body.productID;
     const prodQty = req.body.quantity;

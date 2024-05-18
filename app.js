@@ -189,6 +189,40 @@ app.post("/checkout", (req, res) => {
 });
 
 
+// Route to handle transaction (storing purchased products into a database)
+app.post("/transaction", (req, res) => {
+    // Get customer id from the session
+    const {userID} = req.session;
+    
+    // Iterate over the cart session and insert values into the corresponding columns of the transactions table
+    req.session.cart.forEach(item => {
+        let {productID} = item;
+        let {productQty} = item;
+   
+        connection.query("INSERT INTO transactions VALUES (?, ?, ?)", [userID, productID, productQty], (error) => {
+            if (error) {
+                console.error("Error storing data to the database: ", error);
+                return res.status(500).send("Error storing data to the database!");
+            } 
+        });
+    });
+    // All ok
+    return res.status(201).redirect("/payment") 
+});
+
+
+// Payment route
+app.get("/payment", (req, res) => {
+    // Remove cart session
+    if (req.session.cart) {
+        delete req.session.cart;
+    }
+
+    // Render payment template
+    return res.status(200).render("payment");
+});
+
+
 // Login route
 app.post("/login", (req, res) => {
     // Store request object in loginData constant

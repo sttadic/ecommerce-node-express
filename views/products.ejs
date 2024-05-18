@@ -195,6 +195,11 @@
                         <button id="cart-checkout" class="btn-checkout" type="submit" onclick=<%= !customerName ? "togglePopup()": "" %>
                             <%= !productsList ? `disabled` : "" %>>CHECKOUT</button>
                     </form>
+                    <!-- Login required message -->
+                    <% if (!customerName) { %>
+                        <p class="login-message">Please log in to complete your purchase</p>
+                    <% } %>
+                    
                 </div>
             </div>
         </div>

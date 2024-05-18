@@ -206,3 +206,7 @@
     pointer-events: none;
 }
 
+/* Login required message */
+.login-message {
+    margin-top: 2rem;
+}

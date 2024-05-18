@@ -98,14 +98,15 @@
     outline: 0.2rem solid white;
 }
 
-/* Shopping cart icon*/
+/* Shopping cart - coffee icon*/
 .cart {
     cursor: pointer;
-    width: 3.2rem;
+    width: 3.4rem;
     border-radius: 0.3rem;
-    padding: 0.1rem 0.1rem 0.3rem 0.1rem;
+    padding: 0.2rem;
     margin-left: 1.5rem;
-    opacity: 0.5;
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 .cart:hover {
@@ -113,9 +114,10 @@
     outline: 0.1rem groove rgb(255, 255, 255);
 }
 
-/* Style that is applied to the cart icon after product within the same element is added to cart */
+/* Style that is applied to the cart coffee icon after product within the same element is added to cart */
 .cart-highlight {
     opacity: 1;
+    pointer-events: all;
 }
 
 
@@ -208,5 +210,6 @@
 
 /* Login required message */
 .login-message {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
 }

@@ -38,7 +38,7 @@ function addProduct(addBtn) {
     // Add product Id into an array to be validated on next call by the code above
     arrProductIDs.push(pID);
 
-    // Highlight cart icon of a product added to the cart
+    // Highlight and activate cart coffee icon of a product added to the cart
     let img = addBtn.parentElement.querySelector(".cart");
     img.className = "cart cart-highlight";
 
@@ -148,7 +148,7 @@ function removeFromCart(pID, remBtn) {
     // Remove parent of a parent element (row) from which 'remove button' was clicked on
     remBtn.parentElement.parentElement.remove(); 
 
-    // Remove cart icon highlighting for product being removed
+    // Remove cart coffee icon highlighting for product being removed
     let removedProd = document.querySelector(`.productID[value="${pID}"]`);
     let img = removedProd.parentElement.querySelector(".cart");
     img.className = "cart";
@@ -193,3 +193,11 @@ function validateInput(prodQuantity, prodID, arrProdIDs) {
     }
     return true;
 }
+
+
+// Login required message for checkout button in the cart
+document.getElementById("cart-checkout").addEventListener("click", (event) => {
+    if (!document.getElementById("user").textContent) {
+        document.getElementById("login-message").textContent = "Please log in to complete your purchase";
+    }
+});

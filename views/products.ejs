@@ -46,7 +46,7 @@
                                     <input class="productID" type="number" hidden value=<%= products[i].productID %>>
                                     <input class="quantity" type="number" min="1" max="99" value="1">
                                     <button class="btn" type="submit" onclick="addProduct(this)">Add To Cart</button>
-                                    <!-- Cart icon, that triggers offcanvas (cart), is highlighted if there are products in the cart on page load -->
+                                    <!-- Cart coffee icon, that triggers offcanvas (cart), is highlighted if there are products in the cart on page load -->
                                     <% if (productsList) { %>
                                         <% let isFound = false %>
                                         <% for (let j = 0; j < productsList.length; j++) { %>
@@ -108,7 +108,7 @@
                                         <input class="productID" type="number" hidden value=<%= products[i+1].productID %>>
                                         <input class="quantity" type="number" min="1" max="99" value="1">
                                         <button class="btn" type="submit" onclick="addProduct(this)">Add To Cart</button>
-                                        <!-- Cart icon, that triggers offcanvas (cart), is highlighted if there are products in the cart on page load -->
+                                        <!-- Cart coffee icon, that triggers offcanvas (cart), is highlighted if there are products in the cart on page load -->
                                         <% if (productsList) { %>
                                             <% let isFound = false %>
                                             <% for (let j = 0; j < productsList.length; j++) { %>
@@ -196,10 +196,7 @@
                             <%= !productsList ? `disabled` : "" %>>CHECKOUT</button>
                     </form>
                     <!-- Login required message -->
-                    <% if (!customerName) { %>
-                        <p class="login-message">Please log in to complete your purchase</p>
-                    <% } %>
-                    
+                        <p id="login-message" class="login-message"></p>
                 </div>
             </div>
         </div>

@@ -31,6 +31,12 @@
             </ul>
             <!-- Logic to display welcome <customerName> text after log in -->
             <div class="user" id="user"><%= customerName ? "Welcome " + customerName : "" %></div>
+            <div>
+                <!-- Cart icon displayed only on products page -->
+                <% if (activePage === "products") { %>
+                <img class="cart-icon-navbar" id="cart-icon-navbar" src="/icons/cart1.png" alt="cart icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions">
+                <% } %>
+            </div>
         </div>
     </div>
 </nav>

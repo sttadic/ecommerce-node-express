@@ -1,9 +1,10 @@
 // Assign a random 'carousel item' and 'carousel indicator' an 'active' class on page load
-let randomImg = Math.floor(Math.random() * 3);
+let rand = Math.floor(Math.random() * 3);
 let carouselItems = document.querySelectorAll(".carousel-item");
 let carouselIndicators = document.querySelectorAll(".indicator");
-carouselItems[randomImg].classList.add("active");
-carouselIndicators[randomImg].classList.add("active");
+// Add active class based on the rand variable which determines the index of the slides and indicators arrays (node lists) 
+carouselItems[rand].classList.add("active");
+carouselIndicators[rand].classList.add("active");
 
 
 // Client-side email validation using regular expressions - newsletter submission
@@ -26,6 +27,7 @@ function emailValidator(event) {
         let invalidEmail = document.getElementById("news-email");
         message.textContent = `"${invalidEmail.value}" is not valid e-mail address!`;
         invalidEmail.value = "";
+        // Clear the message if user clicks back to the email input field
         document.getElementById("news-email").addEventListener("click", () => {
             message.textContent = "";
         });

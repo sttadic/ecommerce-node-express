@@ -5,7 +5,7 @@
     <body>
         <!-- Block displaying cart information and go back button/link -->
         <div class="container text-center subtotal">
-            <a href="/products" class="go-back">⇦ Go Bask</a>
+            <a href="/products" class="go-back">⇦ Go Back</a>
 
             <h4 class="items-qty">Number of items in the cart: <%= totalQty %>
             </h4>
@@ -14,25 +14,27 @@
             </h3>
         </div>
 
-        <!-- Bogus payment form -->
+        <!-- Bogus payment form with the Pay Now button -->
         <div class="container text-center payment-info">
             <div class="row">
                 <div class="col-lg-12">
                     Please note that this is a bogus form, no personal details are being stored. There is no need to
                     fill any of the fields, just select 'Pay Now' button below to make a transaction and store purchased
-                    products to the database for a logged in user.
+                    products in the database for a logged in user.
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     Customer Details:
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-3">
                     <input type="text" id="first-name" placeholder="First Name">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <input type="text" id="last-name" placeholder="Last Name">
                 </div>
+                <div class="col-lg-3"></div>
                 <div class="col-lg-12">
                     <input type="email" id="email-address" placeholder="Email">
                 </div>
@@ -60,20 +62,22 @@
                 <div class="col-lg-12">
                     <input type="text" id="card-number" placeholder="Card Number">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-3">
                     <input type="text" id="expiry" placeholder="Expiry Date">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <input type="text" id="cvv" placeholder="CVV">
                 </div>
+                <div class="col-lg-3"></div>
                 <div class="col-lg-12 pay-now">
                     <form action="/transaction" method="POST">
                         <button type="submit" class="btn-pay">Pay Now</button>
                     </form>
                 </div>
             </div>
-
         </div>
+        <!-- End of the payment form -->
     </body>
 
     </html>

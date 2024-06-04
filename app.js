@@ -260,6 +260,37 @@ app.get("/logout", (req, res) => {
 });
 
 
+// Account route
+app.get("/account", (req, res) => {
+    return res.status(200).render("register", {regMessage: ""});
+});
+
+
+// Register route
+app.post("/register", (req, res) => {
+
+    const { name, username, password} = req.body;
+
+    // Simple input validation
+    if (name.trim().length < 1 || username.trim().length < 1 || password.trim().length < 1) {
+        return res.status(400).render("register", {regMessage: "All fields must be completed!"});
+    }
+    if (password.trim().length < 6) {
+        return res.status(400).render("register", {regMessage: "Password must be at least 6 characters long!"});
+    }
+
+    // Store credentials to the database
+    connection.query("INSERT INTO customers (username, password, name) VALUES (?, ?, ?)", [username.trim(), password.trim(), name.trim()], (error) => {
+        if (error) {
+            console.error("Error storing data to the database: ", error);
+            return res.status(500).send("Error storing data to the database!");
+        } else {
+            return res.status(201).render("register", {regMessage: `Thank you for registering ${name}!<br>You can now go back and log in!`});
+        }
+    });
+});
+
+
 
 // Start a server
 app.listen(3000, () => {

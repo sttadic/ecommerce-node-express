@@ -136,7 +136,7 @@ body {
 /* Class that is added to a popup on activation */
 .popup-active {
     display: block;
-    height: 24rem;
+    height: 27rem;
     width: 30rem;
     background-image: url("../images/login_bg.jpg");
     background-size: cover;
@@ -210,4 +210,78 @@ body {
     margin-top: 1rem;
     padding: 0;
     font-size: 1.2rem;
+}
+
+/* Create new account block within popup */
+.popup-account {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.popup-account a {
+    text-decoration: none;
+    color: white;
+    font-style: italic;
+    font-size: 1.3rem;
+}
+
+.popup-account a:hover{
+    font-weight: bold;
+}
+
+/* REGISTER */
+
+.register {
+    margin-top: 3rem;
+    border: 0.5rem groove white;
+    border-radius: 1rem;
+    padding: 2rem;
+    font-size: larger;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.288);
+}
+
+/* Children elements of register form */
+.form-register > * {
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    margin: 1.5rem auto 1.5rem auto;
+
+}
+
+/* Input elements of register form */
+.form-register input {
+    padding: 0.4rem;
+}
+
+.form-register input::placeholder {
+    opacity: 0.8;
+}
+
+/* Register submit button */
+.btn-register {
+    background-color: rgba(0, 0, 0, 0.404);
+    color: white;
+    border: 0.1rem solid white;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.btn-register:hover {
+    outline: 0.2rem outset white;
+}
+
+/* Link to navigate back to the home page */
+.home-register {
+    font-size: 1.4rem;
+    margin-top: 5rem;
+    text-decoration: none;
+    color: white;
+}
+
+.home-register:hover {
+    font-weight: bold;
 }

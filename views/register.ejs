@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us</title>
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <a href="/" class="home-register"> * Back to Homepage * </a>
+        <div class="register">
+            <h2>New Account</h2>
+            <form action="/register" method="POST" class="form-register">
+                <input type="text" name="name" placeholder="Name" autocomplete="off" spellcheck="false">
+
+                <input type="text" name="username" placeholder="Username" autocomplete="off" spellcheck="false">
+
+                <input type="password"  name="password" placeholder="Password" autocomplete="off" spellcheck="false">
+
+                <button type="submit" class="btn-register">Register</button>
+            </form>
+            <p><%- regMessage %></p>
+        </div>
+    </body>
+</html>

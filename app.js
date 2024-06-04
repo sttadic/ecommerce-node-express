@@ -268,8 +268,8 @@ app.get("/account", (req, res) => {
 
 // Register route
 app.post("/register", (req, res) => {
-
-    const { name, username, password} = req.body;
+    // Get all data from the request body
+    const { name, username, password, confPassword} = req.body;
 
     // Simple input validation
     if (name.trim().length < 1 || username.trim().length < 1 || password.trim().length < 1) {
@@ -277,6 +277,9 @@ app.post("/register", (req, res) => {
     }
     if (password.trim().length < 6) {
         return res.status(400).render("register", {regMessage: "Password must be at least 6 characters long!"});
+    }
+    if (password.trim() !== confPassword.trim()) {
+        return res.status(400).render("register", {regMessage: "Passwords do not match!"});
     }
 
     // Store credentials to the database

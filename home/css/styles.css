@@ -239,7 +239,8 @@ body {
     padding: 2rem;
     font-size: larger;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.288);
+    background-color: rgba(0, 0, 0, 0.521);
+    box-shadow: 1rem 1rem 1rem rgb(0, 0, 0);;
 }
 
 /* Children elements of register form */
@@ -280,8 +281,10 @@ body {
     margin-top: 5rem;
     text-decoration: none;
     color: white;
+    text-shadow: 0.4rem 0.4rem 0.4rem rgb(0, 0, 0);
 }
 
 .home-register:hover {
     font-weight: bold;
+    font-size: 1.6rem;
 }

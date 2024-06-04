@@ -7,16 +7,16 @@
         <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        <a href="/" class="home-register"> * Back to Homepage * </a>
+        <a href="/" class="home-register"> ⇦ Back to TheCoffeCove</a>
         <div class="register">
-            <h2>New Account</h2>
+            <h2>Create a New Account</h2>
             <form action="/register" method="POST" class="form-register">
-                <input type="text" name="name" placeholder="Name" autocomplete="off" spellcheck="false">
+                <input type="text" name="name" placeholder="Name" autocomplete="off" spellcheck="false" autofocus>
 
                 <input type="text" name="username" placeholder="Username" autocomplete="off" spellcheck="false">
 
-                <input type="password"  name="password" placeholder="Password" autocomplete="off" spellcheck="false">
-
+                <input type="password"  name="password" placeholder="Create Password" autocomplete="off" spellcheck="false">
+                <input type="password"  name="confPassword" placeholder="Confirm Password" autocomplete="off" spellcheck="false">
                 <button type="submit" class="btn-register">Register</button>
             </form>
             <p><%- regMessage %></p>

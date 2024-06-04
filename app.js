@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+// Import bcrypt
+const bcrypt = require("bcrypt");
+
 // Set up EJS as template engine
 app.set("view engine", "ejs");
 
@@ -229,13 +232,13 @@ app.post("/login", (req, res) => {
     const loginData = req.body;
 
     // Query the database for data of all customers
-    connection.query("SELECT * FROM customers", function(error, data) {
+    connection.query("SELECT * FROM customers", async function(error, data) {
         if (error) {
             console.error("Error retrieving data from database: ", error);
             return res.status(500).send("Error retrieving data from database!");
         } else {
             // Pass in request object properties and array of objects (data) from the database into auth module
-            const authenticated = auth(loginData.username, loginData.password, data);
+            const authenticated = await auth(loginData.username, loginData.password, data);
             // If user is authenticated, store customerId and name in a session object and respond with status 200
             if (authenticated) {
                 req.session.userID = authenticated.customerID;
@@ -266,8 +269,8 @@ app.get("/account", (req, res) => {
 });
 
 
-// Register route
-app.post("/register", (req, res) => {
+// Route that handles registering of a new user
+app.post("/register", async (req, res) => {
     // Get all data from the request body
     const { name, username, password, confPassword} = req.body;
 
@@ -282,8 +285,11 @@ app.post("/register", (req, res) => {
         return res.status(400).render("register", {regMessage: "Passwords do not match!"});
     }
 
+    // Hash the password
+    const hash = await bcrypt.hash(password.trim(), 10);
+
     // Store credentials to the database
-    connection.query("INSERT INTO customers (username, password, name) VALUES (?, ?, ?)", [username.trim(), password.trim(), name.trim()], (error) => {
+    connection.query("INSERT INTO customers (username, password, name) VALUES (?, ?, ?)", [username.trim(), hash, name.trim()], (error) => {
         if (error) {
             console.error("Error storing data to the database: ", error);
             return res.status(500).send("Error storing data to the database!");

@@ -6,6 +6,12 @@ let loginError = document.getElementById("login-error");
 function togglePopup() {
     let blurAll = document.querySelectorAll(".blur");
     let popup = document.getElementById("popup");
+
+    // Check if navbar is collapsed (when button on navbar is clicked on smaller screens), if it is, set it back so it wouldn't cover the popup
+    let navbarCollapse = document.querySelector(".navbar-collapse");
+    if (navbarCollapse.classList.contains("show")) {
+        document.querySelector(".navbar-toggler").click();
+    }
     // Toggle classes for all .blur and .popup elements to add/remove blur and make popup appear/disapear
     blurAll.forEach(element => {
         element.classList.toggle("blur-active");

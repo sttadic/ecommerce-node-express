@@ -48,7 +48,6 @@ body {
 .nav-item {
     margin-left: 0.5rem;
     margin-right: 1.5rem;
-
 }
 
 /* Override bootstrap pseudo-class for currently active links" */
@@ -136,7 +135,7 @@ body {
 /* Class that is added to a popup on activation */
 .popup-active {
     display: block;
-    height: 27rem;
+    height: fit-content;
     width: 30rem;
     background-image: url("../images/login_bg.jpg");
     background-size: cover;
@@ -215,6 +214,7 @@ body {
 /* Create new account block within popup */
 .popup-account {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
     font-size: 1.2rem;
 }

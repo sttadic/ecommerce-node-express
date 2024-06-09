@@ -2,6 +2,7 @@
 Final project for the Web Application Development module - Higher Diploma in Software Development. <br>
 Stjepan Tadic
 
+<br>
 
 ## Table of Content
 - [Introduction](#introduction)
@@ -9,10 +10,12 @@ Stjepan Tadic
 - [Setup](#setup)
 - [Features](#features)
 
+<br>
 
 ## Introduction
 This is an Express.js web application serving as a coffee-themed e-commerce platform. It provides users with essential functionalities such as user registration, login, and logout. Users can subscribe to a newsletter and interact with a catalog of coffee products, add or remove them from the shopping cart, and make purchases.
 
+<br>
 
 ## Technologies Used
 ### Frontend
@@ -32,6 +35,7 @@ This is an Express.js web application serving as a coffee-themed e-commerce plat
 ### Middleware
 - Body-parser (parsing incoming request bodies)
 
+<br>
 
 ## Setup
 - Clone the repository:
@@ -54,6 +58,7 @@ npm start
 ```
 - Navigate to 'http://localhost:3000' in your web browser to see the application in action.
 
+<br>
 
 ## Features
 

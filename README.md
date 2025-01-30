@@ -5,7 +5,6 @@ This is an Express.js web application serving as a coffee-themed e-commerce plat
 <br>
 
 ## Table of Content
-- [Introduction](#introduction)
 - [Technologies Used](#technologies-used)
 - [Setup](#setup)
 - [Features](#features)

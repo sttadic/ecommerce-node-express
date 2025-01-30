@@ -1,6 +1,5 @@
 # Express Application - Web Store 'TheCoffeeCove'
-Final project for the Web Application Development module - Higher Diploma in Software Development. <br>
-Stjepan Tadic
+This is an Express.js web application serving as a coffee-themed e-commerce platform. It provides users with essential functionalities such as user registration, login, and logout. Users can subscribe to a newsletter and interact with a catalog of coffee products, add or remove them from the shopping cart, and make purchases.
 <br>
 ### [Short video demo](https://youtu.be/hZiWZWLP-KY)
 <br>
@@ -10,11 +9,6 @@ Stjepan Tadic
 - [Technologies Used](#technologies-used)
 - [Setup](#setup)
 - [Features](#features)
-
-<br>
-
-## Introduction
-This is an Express.js web application serving as a coffee-themed e-commerce platform. It provides users with essential functionalities such as user registration, login, and logout. Users can subscribe to a newsletter and interact with a catalog of coffee products, add or remove them from the shopping cart, and make purchases.
 
 <br>
 
